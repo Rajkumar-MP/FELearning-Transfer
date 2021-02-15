@@ -1,17 +1,14 @@
 ## Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/60bf3d6e-a5dc-4749-ad8e-04c8804ec345/deploy-status)](https://app.netlify.com/sites/felearning-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/34456a42-0b20-49ef-89c4-3624f7bcd76e/deploy-status)](https://app.netlify.com/sites/felearning-transfer/deploys)
 
-## Open-wc Starter App
-
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
 
 ## Quickstart
 
 To get started:
 
 ```bash
-npm init @open-wc
+npm install
 # requires node 10 & npm 6 or higher
 ```
 
