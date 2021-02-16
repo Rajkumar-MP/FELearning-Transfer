@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
 
 export class FeApp extends LitElement {
   static get properties() {
