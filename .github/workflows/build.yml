@@ -27,5 +27,7 @@ jobs:
     name: deployment
     needs: install
     steps:
-      - name: deploy
+      - name: deploy-storybook
+        run: curl -X POST -d {} ${{ secrets.NETLIFY_HOOKS_SB }}
+      - name: deploy-app
         run: curl -X POST -d {} ${{ secrets.NETLIFY_HOOKS }}
