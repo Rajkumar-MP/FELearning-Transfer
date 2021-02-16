@@ -1,8 +1,18 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
-  files: 'test/**/*.test.js',
+  files: ['test/**/*.test.js', 'src/**/*.test.js'],
   nodeResolve: true,
+  coverageConfig: {
+    report: true,
+    reportDir: 'coverage',
+    threshold: {
+      statements: 80,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+    },
+  }
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto',
