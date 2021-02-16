@@ -1,4 +1,4 @@
-## Status
+## Banking Transfer application
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/34456a42-0b20-49ef-89c4-3624f7bcd76e/deploy-status)](https://app.netlify.com/sites/felearning-transfer/deploys)
 
