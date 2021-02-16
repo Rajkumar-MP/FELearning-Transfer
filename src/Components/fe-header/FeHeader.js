@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-export class FeApp extends LitElement {
+export class FeHeader extends LitElement {
   static get properties() {
     return {
       title: { type: String },
@@ -62,6 +62,17 @@ export class FeApp extends LitElement {
     return html`
       <main>
         <h1>${this.title}</h1>
+
+        <p>Edit <code>src/FeApp.js</code> and save to reload.</p>
+        <a
+          class="app-link"
+          href="https://open-wc.org/guides/developing-components/code-examples/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Code examples
+        </a>
+        <button>${this.btnLabel}</button>
       </main>
     `;
   }
