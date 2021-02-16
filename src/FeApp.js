@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
 
 export class FeApp extends LitElement {
   static get properties() {
@@ -55,13 +54,12 @@ export class FeApp extends LitElement {
 
   constructor() {
     super();
-    this.title = 'FE Center Application';
+    this.title = 'Bank Transfer Application';
   }
 
   render() {
     return html`
       <main>
-        <div class="logo">${openWcLogo}</div>
         <h1>${this.title}</h1>
 
         <p>Edit <code>src/FeApp.js</code> and save to reload.</p>
