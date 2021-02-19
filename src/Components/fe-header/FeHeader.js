@@ -56,6 +56,7 @@ export class FeHeader extends LitElement {
   constructor() {
     super();
     this.title = 'Bank Transfer Application';
+    this.btnLabel = 'Submit';
   }
 
   render() {
