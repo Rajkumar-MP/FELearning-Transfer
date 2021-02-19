@@ -3,44 +3,42 @@ import { LitElement, html, css } from 'lit-element';
 export class FeHeader extends LitElement {
   static get properties() {
     return {
-      title: { type: String },
-      btnLabel: { type: String },
+      title: { type: String }
+     
     };
   }
 
   static get styles() {
     return css`
       :host {
-        min-height: 100vh;
+        height:15vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        font-size: calc(10px + 2vmin);
-        color: #1a2b42;
-        max-width: 960px;
+        font-size: 25px;
+        color: #fff;
+        
+        background-color: var(--fe-header-background-color);
+        width:100%;
         margin: 0 auto;
         text-align: center;
-        background-color: var(--fe-app-background-color);
+       
       }
-
+    header{
+      background-color:brown;
+      width:100%;
+    }
       main {
         flex-grow: 1;
       }
 
-      .logo > svg {
-        margin-top: 36px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      
+    :host h1{
+      
+      margin-top: 10px;
+    }
+     
 
       .app-footer {
         font-size: calc(12px + 0.5vmin);
@@ -55,24 +53,18 @@ export class FeHeader extends LitElement {
 
   constructor() {
     super();
-    this.title = 'Bank Transfer Application';
+    this.title = 'ING Bank';
+    
   }
 
   render() {
     return html`
       <main>
-        <h1>${this.title}</h1>
-
-        <p>Edit <code>src/FeApp.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-        <button>${this.btnLabel}</button>
+        <header>
+       <h1>${this.title}</h1>
+       </header>
+        
+       
       </main>
     `;
   }

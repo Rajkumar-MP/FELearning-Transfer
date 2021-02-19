@@ -60,9 +60,9 @@ export class FeApp extends LitElement {
 
   render() {
     return html`
-      <main>
-        <h1>${this.title}</h1>
-      </main>
+      
+       <fe-header></fe-header>
+      
     `;
   }
 }
