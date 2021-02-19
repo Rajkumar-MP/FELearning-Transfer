@@ -62,6 +62,7 @@ export class FeApp extends LitElement {
     return html`
       <main>
         <h1>${this.title}</h1>
+        <fe-lang-toggle></fe-lang-toggle>
       </main>
     `;
   }
