@@ -59,11 +59,6 @@ export class FeApp extends LitElement {
   }
 
   render() {
-    return html`
-      
-        <h1><fe-header></fe-header></h1>
-        
-      
-    `;
+    return html` <h1><fe-header></fe-header></h1> `;
   }
 }

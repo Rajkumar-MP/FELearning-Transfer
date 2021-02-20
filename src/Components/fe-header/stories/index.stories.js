@@ -9,12 +9,17 @@ export default {
   },
 };
 
-function Template({ title , backgroundColor }) {
-  return html` <fe-header .title=${title} style="--fe-header-background-color: ${backgroundColor || 'orange'}" > </fe-header> `;
+function Template({ title, backgroundColor }) {
+  return html`
+    <fe-header
+      .title=${title}
+      style="--fe-header-background-color: ${backgroundColor || 'orange'}"
+    >
+    </fe-header>
+  `;
 }
 
 export const Header = Template.bind({});
 Header.args = {
-  
-  title: 'ING Bank'
+  title: 'ING Bank',
 };
