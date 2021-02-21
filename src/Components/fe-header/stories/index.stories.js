@@ -4,19 +4,10 @@ import '../fe-header.js';
 export default {
   title: 'Component',
   component: 'fe-header',
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 };
 
-function Template({ title, backgroundColor }) {
-  return html`
-    <fe-header
-      .title=${title}
-      style="--fe-header-background-color: ${backgroundColor || 'orange'}"
-    >
-    </fe-header>
-  `;
+function Template({ title }) {
+  return html` <fe-header .title=${title}> </fe-header> `;
 }
 
 export const Header = Template.bind({});

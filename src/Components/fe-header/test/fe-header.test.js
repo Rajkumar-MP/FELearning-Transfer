@@ -15,7 +15,7 @@ describe('FeHeader', () => {
     expect(h1.textContent).to.equal('ING Bank');
   });
 
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });

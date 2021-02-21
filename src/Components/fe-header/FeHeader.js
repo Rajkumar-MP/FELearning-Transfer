@@ -18,7 +18,6 @@ export class FeHeader extends LitElement {
         font-size: 25px;
         color: #fff;
 
-        background-color: var(--fe-header-background-color);
         width: 100%;
         margin: 0 auto;
         text-align: center;
