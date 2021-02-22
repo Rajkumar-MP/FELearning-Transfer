@@ -17,7 +17,7 @@ describe('FeLangToggle', () => {
     expect(button2.textContent).to.equal('NL');
   });
 
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });

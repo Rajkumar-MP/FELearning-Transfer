@@ -4,7 +4,6 @@ export class FeHeader extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      btnLabel: { type: String },
     };
   }
 
@@ -56,7 +55,6 @@ export class FeHeader extends LitElement {
   constructor() {
     super();
     this.title = 'Bank Transfer Application';
-    this.btnLabel = 'Submit';
   }
 
   render() {
@@ -73,7 +71,6 @@ export class FeHeader extends LitElement {
         >
           Code examples
         </a>
-        <button>${this.btnLabel}</button>
       </main>
     `;
   }

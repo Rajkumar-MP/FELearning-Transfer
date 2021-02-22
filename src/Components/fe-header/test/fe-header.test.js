@@ -9,13 +9,7 @@ describe('FeHeader', () => {
     element.btnLabel = 'Accept';
   });
 
-  it('renders a button Label', () => {
-    const button = element.shadowRoot.querySelector('button');
-    expect(button).to.exist;
-    expect(button.textContent).to.equal('Accept');
-  });
-
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });

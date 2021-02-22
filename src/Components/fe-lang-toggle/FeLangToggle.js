@@ -10,16 +10,16 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
   }
 
   static get properties() {
-    return {
-      EngBtn: { type: String },
-      DutBtn: { type: String },
-    };
+    return {};
   }
 
-  constructor() {
-    super();
-    this.EngBtn = 'EN';
-    this.DutBtn = 'NL';
+  static langChng(e) {
+    e.preventDefault();
+    if (e.target.id === 'btn-en') {
+      localize.locale = 'en-GB';
+    } else if (e.target.id === 'btn-nl') {
+      localize.locale = 'nl-NL';
+    }
   }
 
   static get styles() {
@@ -55,22 +55,22 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         <h1>${localize.msg('fe-lang-toggle:foo')}</h1>
 
         <div>
-          <button class="btn" id="btn-en" @click=${e => this.langChng(e)}>
-            ${this.EngBtn}
+          <button
+            class="btn"
+            id="btn-en"
+            @click=${e => FeLangToggle.langChng(e)}
+          >
+            EN
           </button>
-          <button class="btn" id="btn-nl" @click=${e => this.langChng(e)}>
-            ${this.DutBtn}
+          <button
+            class="btn"
+            id="btn-nl"
+            @click=${e => FeLangToggle.langChng(e)}
+          >
+            NL
           </button>
         </div>
       </main>
     `;
-  }
-
-  static langChng(e) {
-    if (e.target.id === 'btn-en') {
-      localize.locale = 'en-GB';
-    } else if (e.target.id === 'btn-nl') {
-      localize.locale = 'nl-NL';
-    }
   }
 }
