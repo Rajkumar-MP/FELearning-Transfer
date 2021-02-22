@@ -8,6 +8,12 @@ export class FeCard extends LitElement {
     };
   }
 
+  constructor() {
+    super();
+    this.title = 'title';
+    this.content = 'content';
+  }
+
   static get styles() {
     return css`
       :host {
@@ -35,7 +41,7 @@ export class FeCard extends LitElement {
     return html`
       <div>
         <h1>${this.title}</h1>
-        <h3>${this.content}</h3>
+        <h2>${this.content}</h2>
       </div>
     `;
   }

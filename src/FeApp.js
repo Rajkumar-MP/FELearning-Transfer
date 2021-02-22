@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import './Components/fe-card/fe-card.js';
 
 export class FeApp extends LitElement {
   static get properties() {
@@ -62,6 +63,7 @@ export class FeApp extends LitElement {
     return html`
       <main>
         <h1>${this.title}</h1>
+        <fe-card></fe-card>
       </main>
     `;
   }
