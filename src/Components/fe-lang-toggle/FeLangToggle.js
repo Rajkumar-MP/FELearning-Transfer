@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
 import { localize, LocalizeMixin } from '@lion/localize';
 
+import '../../../node_modules/@lion/button/lion-button.js';
+
 export class FeLangToggle extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
     return [
@@ -15,9 +17,10 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
 
   static langChng(e) {
     e.preventDefault();
-    if (e.target.id === 'btn-en') {
+    if (e.target.id === 'btn-en' && e.target.className === 'over') {
       localize.locale = 'en-GB';
-    } else if (e.target.id === 'btn-nl') {
+    } else if (e.target.id === 'btn-nl' && e.target.className === 'over') {
+      e.target.className = 'active';
       localize.locale = 'nl-NL';
     }
   }
@@ -29,7 +32,7 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         justify-content:flex-end;
             }
   
-        button {
+        .btn {
         background-color:#fff;
         color:#000;
         border-radius;
@@ -38,13 +41,22 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         justify-content:right;
         }
 
-       button:hover {
+       .active,
+       .btn:hover {
         background:#edbae5;
+        
         }
-    button:focus,
-    button:active,
-    button:visited{
-        background: #b52ed1;
+
+        .over{
+          background-color:#fff;
+
+        }
+
+        
+    .btn:focus,
+   {
+      background: #b52ed1;
+      outline: 0;
         }
         
 
@@ -54,21 +66,19 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <main>
-        <div>
-          <button
+        <div id="mydiv">
+          <lion-button
             class="btn"
             id="btn-en"
             @click=${e => FeLangToggle.langChng(e)}
+            >EN</lion-button
           >
-            EN
-          </button>
-          <button
+          <lion-button
             class="btn"
             id="btn-nl"
             @click=${e => FeLangToggle.langChng(e)}
+            >NL</lion-button
           >
-            NL
-          </button>
         </div>
       </main>
     `;
