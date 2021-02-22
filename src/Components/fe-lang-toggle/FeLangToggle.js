@@ -41,7 +41,9 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
        button:hover {
         background:#edbae5;
         }
-    button:focus{
+    button:focus,
+    button:active,
+    button:visited{
         background: #b52ed1;
         }
         
@@ -52,8 +54,6 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <main>
-        <h1>${localize.msg('fe-lang-toggle:foo')}</h1>
-
         <div>
           <button
             class="btn"
