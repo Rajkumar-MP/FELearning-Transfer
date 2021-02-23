@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { localize, LocalizeMixin } from '@lion/localize';
-
-import '../../../node_modules/@lion/button/lion-button.js';
+import '@lion/button';
 
 export class FeLangToggle extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
@@ -41,46 +40,38 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         justify-content:right;
         }
 
-       .active,
-       .btn:hover {
-        background:#edbae5;
-        
+    
+       .btn:hover
+       {
+          background-color:#dfb5e8;
         }
 
-        .over{
-          background-color:#fff;
-
-        }
-
-        
-    .btn:focus,
-   {
-      background: #b52ed1;
-      outline: 0;
+        .btn:active{
+          background-color:#c146db;
         }
         
+        
+       
 
        `;
   }
 
   render() {
     return html`
-      <main>
-        <div id="mydiv">
-          <lion-button
-            class="btn"
-            id="btn-en"
-            @click=${e => FeLangToggle.langChng(e)}
-            >EN</lion-button
-          >
-          <lion-button
-            class="btn"
-            id="btn-nl"
-            @click=${e => FeLangToggle.langChng(e)}
-            >NL</lion-button
-          >
-        </div>
-      </main>
+      <div id="mydiv">
+        <lion-button
+          class="btn"
+          id="btn-en"
+          @click=${e => FeLangToggle.langChng(e)}
+          >EN</lion-button
+        >
+        <lion-button
+          class="btn"
+          id="btn-nl"
+          @click=${e => FeLangToggle.langChng(e)}
+          >NL</lion-button
+        >
+      </div>
     `;
   }
 }
