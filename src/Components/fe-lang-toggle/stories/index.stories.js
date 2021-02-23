@@ -1,13 +1,13 @@
 import { html } from 'lit-html';
-import '../fe-lang-toggle.js';
+import './sample-toggle.js';
 
 export default {
   title: 'Component',
-  component: 'fe-lang-toggle',
+  component: 'sample-toggle',
 };
 
 function Template() {
-  return html` <fe-lang-toggle> </fe-lang-toggle> `;
+  return html` <sample-toggle></sample-toggle> `;
 }
 
 export const Toggle = Template.bind({});

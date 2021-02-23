@@ -5,7 +5,10 @@ import '@lion/button';
 export class FeLangToggle extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
     return [
-      { 'fe-lang-toggle': locale => import(`./translations/${locale}.js`) },
+      {
+        'fe-lang-toggle': locale =>
+          import(`./stories/translations/${locale}.js`),
+      },
       ...super.localizeNamespaces,
     ];
   }
@@ -14,13 +17,25 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     return {};
   }
 
-  static langChng(e) {
+  langChng(e) {
     e.preventDefault();
-    if (e.target.id === 'btn-en' && e.target.className === 'over') {
+    if (e.target.id === 'btn-en') {
       localize.locale = 'en-GB';
-    } else if (e.target.id === 'btn-nl' && e.target.className === 'over') {
-      e.target.className = 'active';
+
+      this.shadowRoot
+        .querySelector('#btn-en')
+        .classList.toggle('selected', true);
+      this.shadowRoot
+        .querySelector('#btn-nl')
+        .classList.toggle('selected', false);
+    } else if (e.target.id === 'btn-nl') {
       localize.locale = 'nl-NL';
+      this.shadowRoot
+        .querySelector('#btn-nl')
+        .classList.toggle('selected', true);
+      this.shadowRoot
+        .querySelector('#btn-en')
+        .classList.toggle('selected', false);
     }
   }
 
@@ -40,19 +55,14 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         justify-content:right;
         }
 
-    
-       .btn:hover
-       {
-          background-color:#dfb5e8;
+        .btn:hover,
+        {
+          color:#000;
         }
 
-        .btn:active{
-          background-color:#c146db;
+        .selected {
+          border: 2px double #cc2b5e;
         }
-        
-        
-       
-
        `;
   }
 
@@ -60,15 +70,12 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     return html`
       <div id="mydiv">
         <lion-button
-          class="btn"
+          class="btn selected"
           id="btn-en"
-          @click=${e => FeLangToggle.langChng(e)}
+          @click=${e => this.langChng(e)}
           >EN</lion-button
         >
-        <lion-button
-          class="btn"
-          id="btn-nl"
-          @click=${e => FeLangToggle.langChng(e)}
+        <lion-button class="btn" id="btn-nl" @click=${e => this.langChng(e)}
           >NL</lion-button
         >
       </div>
