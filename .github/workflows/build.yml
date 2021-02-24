@@ -10,6 +10,7 @@ jobs:
         node-version: [12.x]
     steps:
       - uses: actions/checkout@v2
+      - uses: codecov/codecov-action@v1
       - name: use nodejs v ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -20,6 +21,9 @@ jobs:
         run: npm run lint
       - name: tests
         run: npm run test
+      - name: code coverage
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
         
   deploy:
     if: github.ref == 'refs/heads/master'
