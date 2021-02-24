@@ -13,30 +13,30 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     ];
   }
 
+  firstUpdated() {
+    super.firstUpdated();
+    if (localize.locale === 'en-GB') {
+      this.shadowRoot.querySelector('#en-GB').classList.add('selected');
+    } else {
+      this.shadowRoot.querySelector('#nl-NL').classList.add('selected');
+    }
+  }
+
   static get properties() {
     return {};
   }
 
-  langChng(e) {
-    e.preventDefault();
-    if (e.target.id === 'btn-en') {
-      localize.locale = 'en-GB';
-
-      this.shadowRoot
-        .querySelector('#btn-en')
-        .classList.toggle('selected', true);
-      this.shadowRoot
-        .querySelector('#btn-nl')
-        .classList.toggle('selected', false);
-    } else if (e.target.id === 'btn-nl') {
-      localize.locale = 'nl-NL';
-      this.shadowRoot
-        .querySelector('#btn-nl')
-        .classList.toggle('selected', true);
-      this.shadowRoot
-        .querySelector('#btn-en')
-        .classList.toggle('selected', false);
-    }
+  toggleLanguage(locale) {
+    localize.locale = locale;
+    const buttons = this.shadowRoot.querySelectorAll('lion-button');
+    buttons.forEach(button => {
+      button.classList.remove('selected');
+    });
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.add('selected');
+      });
+    });
   }
 
   static get styles() {
@@ -55,9 +55,9 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         justify-content:right;
         }
 
-        .btn:hover,
+        .btn:hover
         {
-          color:#000;
+          background-color:#eea2ad;
         }
 
         .selected {
@@ -70,12 +70,15 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     return html`
       <div id="mydiv">
         <lion-button
-          class="btn selected"
-          id="btn-en"
-          @click=${e => this.langChng(e)}
+          class="btn"
+          id="en-GB"
+          @click=${() => this.toggleLanguage('en-GB')}
           >EN</lion-button
         >
-        <lion-button class="btn" id="btn-nl" @click=${e => this.langChng(e)}
+        <lion-button
+          class="btn"
+          id="nl-NL"
+          @click=${() => this.toggleLanguage('nl-NL')}
           >NL</lion-button
         >
       </div>

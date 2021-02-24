@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import './Components/fe-lang-toggle/fe-lang-toggle.js';
 
 export class FeApp extends LitElement {
   static get properties() {
@@ -60,13 +59,6 @@ export class FeApp extends LitElement {
   }
 
   render() {
-    return html`
-      <main>
-        <h1>${this.title}</h1>
-        <fe-lang-toggle></fe-tang-toggle>
-        
-      </main>
-      
-    `;
+    return html` <h1>${this.title}</h1> `;
   }
 }

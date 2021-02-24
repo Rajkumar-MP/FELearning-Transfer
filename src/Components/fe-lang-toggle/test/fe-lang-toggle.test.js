@@ -9,8 +9,8 @@ describe('FeLangToggle', () => {
   });
 
   it('renders a button Label', () => {
-    const button = element.shadowRoot.querySelector('#btn-en');
-    const button2 = element.shadowRoot.querySelector('#btn-nl');
+    const button = element.shadowRoot.querySelector('#en-GB');
+    const button2 = element.shadowRoot.querySelector('#nl-NL');
     expect(button).to.exist;
     expect(button2).to.exist;
     expect(button.textContent).to.equal('EN');
