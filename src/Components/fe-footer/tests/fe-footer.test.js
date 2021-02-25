@@ -1,16 +1,16 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '../src/fe-app.js';
+import '../fe-footer.js';
 
-describe('FeApp', () => {
+describe('FeFooter', () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html`<fe-app></fe-app>`);
+    element = await fixture(html`<fe-footer></fe-footer>`);
   });
 
- 
+  
 
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
