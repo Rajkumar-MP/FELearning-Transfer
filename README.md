@@ -1,6 +1,6 @@
 ## Banking Transfer application
 
-[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://felearning-transfer-storybook.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/34456a42-0b20-49ef-89c4-3624f7bcd76e/deploy-status)](https://app.netlify.com/sites/felearning-transfer/deploys)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://felearning-transfer-storybook.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/34456a42-0b20-49ef-89c4-3624f7bcd76e/deploy-status)](https://app.netlify.com/sites/felearning-transfer/deploys) [![codecov](https://codecov.io/gh/Rajkumar-MP/FELearning-Transfer/branch/master/graph/badge.svg?token=126VZHIYB5)](https://codecov.io/gh/Rajkumar-MP/FELearning-Transfer)
 
 
 ## Quickstart
@@ -28,6 +28,7 @@ If you customize the configuration a lot, you can consider moving them to indivi
 
 ## Repo Contributors
 Rajkumar.MP
+
 Shadab Hussain
 
 Nayana Bhovi
