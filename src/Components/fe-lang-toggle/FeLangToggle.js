@@ -26,17 +26,13 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     return {};
   }
 
-  toggleLanguage(locale) {
+  toggleLanguage(e, locale) {
     localize.locale = locale;
     const buttons = this.shadowRoot.querySelectorAll('lion-button');
     buttons.forEach(button => {
       button.classList.remove('selected');
     });
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        button.classList.add('selected');
-      });
-    });
+    e.target.classList.add('selected');
   }
 
   static get styles() {
@@ -62,6 +58,7 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
 
         .selected {
           border: 2px double #cc2b5e;
+          background-color:#eea2ad;
         }
        `;
   }
@@ -72,13 +69,13 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         <lion-button
           class="btn"
           id="en-GB"
-          @click=${() => this.toggleLanguage('en-GB')}
+          @click=${e => this.toggleLanguage(e, 'en-GB')}
           >EN</lion-button
         >
         <lion-button
           class="btn"
           id="nl-NL"
-          @click=${() => this.toggleLanguage('nl-NL')}
+          @click=${e => this.toggleLanguage(e, 'nl-NL')}
           >NL</lion-button
         >
       </div>
