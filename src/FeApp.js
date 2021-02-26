@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import './Components/fe-header/fe-header.js';
 
 export class FeApp extends LitElement {
   static get properties() {
@@ -60,6 +59,6 @@ export class FeApp extends LitElement {
   }
 
   render() {
-    return html` <h1><fe-header></fe-header></h1> `;
+    return html` <h1>${this.title}</h1> `;
   }
 }
