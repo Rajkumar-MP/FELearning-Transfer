@@ -34,7 +34,7 @@
   "author": "fe-app",
   "license": "MIT",
   "dependencies": {
-    "@lion/button": "^0.8.10",
+    "@lion/button": "^0.8.11",
     "@lion/form": "^0.7.18",
     "@lion/input": "^0.11.1",
     "@lion/localize": "^0.16.0",
