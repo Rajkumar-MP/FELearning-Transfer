@@ -10,10 +10,20 @@ describe('FeTransactionReview', () => {
     );
   });
 
-  it('renders a from label', () => {
+  it('renders a heading', () => {
     const h3 = element.shadowRoot.querySelector('h3');
     expect(h3).to.exist;
     expect(h3.textContent).to.equal('Transaction Details');
+  });
+
+  it('renders a from label', () => {
+    const from = element.shadowRoot.querySelector('#from');
+    expect(from).to.exist;
+  });
+
+  it('renders a to label', () => {
+    const to = element.shadowRoot.querySelector('#to');
+    expect(to).to.exist;
   });
 
   it('passes the a11y audit', async () => {

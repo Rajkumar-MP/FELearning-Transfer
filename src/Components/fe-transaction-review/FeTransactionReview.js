@@ -27,6 +27,12 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
     };
   }
 
+  constructor() {
+    super();
+    this.from = '456';
+    this.to = '789';
+  }
+
   static get styles() {
     return css`
       :host {
@@ -58,12 +64,12 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
       <div>
         ${this.from === undefined
           ? nothing
-          : html` <p id="1">
+          : html` <p id="from">
               <b>${localize.msg('fe-transaction-review:from')}: </b>${this.from}
             </p>`}
         ${this.to === undefined
           ? nothing
-          : html` <p id="2">
+          : html` <p id="to">
               <b>${localize.msg('fe-transaction-review:to')}: </b>${this.to}
             </p>`}
         ${this.amount === undefined
