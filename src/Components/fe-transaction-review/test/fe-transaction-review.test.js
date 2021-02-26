@@ -26,6 +26,16 @@ describe('FeTransactionReview', () => {
     expect(to).to.exist;
   });
 
+  it('renders a amount label', () => {
+    const amount = element.shadowRoot.querySelector('#amount');
+    expect(amount).to.exist;
+  });
+
+  it('renders a remarks label', () => {
+    const remarks = element.shadowRoot.querySelector('#remarks');
+    expect(remarks).to.exist;
+  });
+
   it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });

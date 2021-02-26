@@ -31,6 +31,8 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
     super();
     this.from = '456';
     this.to = '789';
+    this.amount = 5000;
+    this.remarks = 'Fund';
   }
 
   static get styles() {
@@ -74,13 +76,13 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
             </p>`}
         ${this.amount === undefined
           ? nothing
-          : html` <p id="3">
+          : html` <p id="amount">
               <b>${localize.msg('fe-transaction-review:amount')}: </b>${this
                 .amount}
             </p>`}
         ${this.remarks === undefined
           ? nothing
-          : html` <p id="4">
+          : html` <p id="remarks">
               <b>${localize.msg('fe-transaction-review:remarks')}: </b>${this
                 .remarks}
             </p>`}
