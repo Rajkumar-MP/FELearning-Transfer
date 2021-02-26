@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
-import '@lion/form/lion-form.js';
-import '@lion/input/lion-input.js';
+import '@lion/form/lion-form';
+import '@lion/input/lion-input';
 
 export class FeLogin extends LitElement {
   static get properties() {
