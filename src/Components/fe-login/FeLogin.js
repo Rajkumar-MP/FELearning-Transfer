@@ -1,13 +1,26 @@
 import { LitElement, html, css } from 'lit-element';
 import '@lion/form/lion-form';
 import '@lion/input/lion-input';
+import { localize, LocalizeMixin } from '@lion/localize';
 
-export class FeLogin extends LitElement {
+export class FeLogin extends LocalizeMixin(LitElement) {
+  static get localizeNamespaces() {
+    return [
+      { 'fe-login': locale => import(`./translations/${locale}.js`) },
+      ...super.localizeNamespaces,
+    ];
+  }
+
   static get properties() {
     return {
       username: { type: String },
       password: { type: String },
     };
+  }
+
+  constructor() {
+    super();
+    localize.locale = 'en-GB';
   }
 
   static get styles() {
@@ -18,8 +31,7 @@ export class FeLogin extends LitElement {
         font-size: 20px;
       }
 
-      h1 {
-        font-size: 20px;
+      h2 {
         margin: 20px;
       }
     `;
@@ -27,12 +39,13 @@ export class FeLogin extends LitElement {
 
   render() {
     return html`
-    <h1>Login Details</h1>
+    <h2>Login Details</h2>
     <lion-form>
     <form>
-    <lion-input name="username" id="username" label="Username"></lion-input><br>
-    <lion-input name="password"  id="password" label="Password"></lion-input> 
-    
+    <lion-input name="username" id="username"
+     label=${localize.msg('fe-login:username')}></lion-input><br>
+    <lion-input name="password" id="password"
+     label=${localize.msg('fe-login:password')}></lion-input> 
     </lion-input>
     </form>
     </lion-form>
