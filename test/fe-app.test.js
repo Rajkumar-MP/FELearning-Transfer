@@ -14,7 +14,7 @@ describe('FeApp', () => {
     expect(h1.textContent).to.equal('');
   });
 
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
