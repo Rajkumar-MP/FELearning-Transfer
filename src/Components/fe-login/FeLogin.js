@@ -11,18 +11,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     ];
   }
 
-  static get properties() {
-    return {
-      username: { type: String },
-      password: { type: String },
-    };
-  }
-
-  constructor() {
-    super();
-    localize.locale = 'en-GB';
-  }
-
   static get styles() {
     return css`
       form {
