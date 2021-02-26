@@ -1,4 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
+import '@lion/form/lion-form.js';
+import '@lion/input/lion-input.js';
 
 export class FeLogin extends LitElement {
   static get properties() {
@@ -11,29 +13,30 @@ export class FeLogin extends LitElement {
   static get styles() {
     return css`
       form {
-        width: 100%;
+        width: 600px;
         padding: 20px;
         font-size: 20px;
       }
-      input[type='text'] {
-        width: 100%;
-        padding: 5px;
+
+      h1 {
+        font-size: 20px;
+        margin: 20px;
       }
     `;
   }
 
   render() {
     return html`
-      <h1>Login Details</h1>
-      <form>
-        <label for="name">Username</label>
-        <br />
-        <input type="text" name="name" id="username" /><br />
-        <br />
-        <label for="password">Password</label>
-        <br />
-        <input type="text" name="name" id="password" />
-      </form>
+    <h1>Login Details</h1>
+    <lion-form>
+    <form>
+    <lion-input name="username" id="username" label="Username"></lion-input><br>
+    <lion-input name="password"  id="password" label="Password"></lion-input> 
+    
+    </lion-input>
+    </form>
+    </lion-form>
+  
     `;
   }
 }

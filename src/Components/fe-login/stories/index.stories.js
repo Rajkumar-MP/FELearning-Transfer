@@ -8,7 +8,7 @@ export default {
 
 function Template({ username, password }) {
   return html`
-    <fe-login .username:${username} .password ${password}></fe-login>
+    <fe-login .username=${username} .password=${password}></fe-login>
   `;
 }
 
