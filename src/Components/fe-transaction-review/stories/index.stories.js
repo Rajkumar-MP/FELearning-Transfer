@@ -18,8 +18,8 @@ function Template({ from, to, amount, remarks }) {
   `;
 }
 
-export const Header = Template.bind({});
-Header.args = {
+export const TransactionReview = Template.bind({});
+TransactionReview.args = {
   from: '123654789',
   to: '564789321',
   amount: 40000,

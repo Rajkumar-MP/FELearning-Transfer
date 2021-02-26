@@ -1,6 +1,23 @@
 import { LitElement, html, css } from 'lit-element';
+import { nothing } from 'lit-html';
+import { localize, LocalizeMixin } from '@lion/localize';
 
-export class FeTransactionReview extends LitElement {
+export class FeTransactionReview extends LocalizeMixin(LitElement) {
+  static get localizeNamespaces() {
+    return [
+      {
+        'fe-transaction-review': locale =>
+          import(`./translations/${locale}.js`),
+      },
+      ...super.localizeNamespaces,
+    ];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    localize.locale = 'nl-NL';
+  }
+
   static get properties() {
     return {
       from: { type: String },
@@ -8,14 +25,6 @@ export class FeTransactionReview extends LitElement {
       amount: { type: Number },
       remarks: { type: String },
     };
-  }
-
-  constructor() {
-    super();
-    this.from = '0123456789';
-    this.to = '987456321';
-    this.amount = 50000;
-    this.remarks = 'Fund Transfer';
   }
 
   static get styles() {
@@ -45,15 +54,31 @@ export class FeTransactionReview extends LitElement {
 
   render() {
     return html`
+      <h3>Transaction Details</h3>
       <div>
-      <h3>Transaction Details</h4>
-      <h4 id="1">From:  ${this.from}</h4>
-      <h4 id="2">To:  ${this.to}</h4>
-      <h4 id="3">Amount:  ${this.amount}</h4>
-      <h4 id="4">Remarks: ${this.remarks}</h4>
+        ${this.from === undefined
+          ? nothing
+          : html` <p id="1">
+              <b>${localize.msg('fe-transaction-review:from')}: </b>${this.from}
+            </p>`}
+        ${this.to === undefined
+          ? nothing
+          : html` <p id="2">
+              <b>${localize.msg('fe-transaction-review:to')}: </b>${this.to}
+            </p>`}
+        ${this.amount === undefined
+          ? nothing
+          : html` <p id="3">
+              <b>${localize.msg('fe-transaction-review:amount')}: </b>${this
+                .amount}
+            </p>`}
+        ${this.remarks === undefined
+          ? nothing
+          : html` <p id="4">
+              <b>${localize.msg('fe-transaction-review:remarks')}: </b>${this
+                .remarks}
+            </p>`}
       </div>
-      
-  
     `;
   }
 }
