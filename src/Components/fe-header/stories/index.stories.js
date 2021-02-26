@@ -6,11 +6,11 @@ export default {
   component: 'fe-header',
 };
 
-function Template({ btnLabel }) {
-  return html` <fe-header .btnLabel=${btnLabel}> </fe-header> `;
+function Template({ title }) {
+  return html` <fe-header .title=${title}> </fe-header> `;
 }
 
 export const Header = Template.bind({});
 Header.args = {
-  btnLabel: 'Submit',
+  title: 'ING Bank',
 };
