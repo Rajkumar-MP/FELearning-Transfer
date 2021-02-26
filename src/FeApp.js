@@ -59,8 +59,9 @@ export class FeApp extends LitElement {
 
   render() {
     return html`
-    
+    <div>
          <fe-footer primary="hello" secondary="back"></fe-footer>
+         </div>
         `
   }
 }

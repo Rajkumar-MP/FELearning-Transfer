@@ -10,23 +10,7 @@ export class FeFooter extends LitElement {
             secondary : {type : String},
         };
       }
-        
-     parent(e){
-       e.preventDefault();
-       if(e.target.id === 'primary')
-       {
-          alert("primary selected");
-          
-         
-       }
-       else if(e.target.id === 'secondary'){
-         alert("secondary selected");
-       }
-
-     }
-
-
-
+      
       static get styles() {
         return css`
            
@@ -64,20 +48,28 @@ export class FeFooter extends LitElement {
 
     render() {
       return html`
-     <footer>
+     <footer class= "prime">
+     <div class ="primary">
        ${
-         this.primary  ?  html `<lion-button class = "primary" id="primary" @click = ${() => this.prime()}>${this.primary}</lion-button>` :  nothing
+         this.primary  ?  html `<lion-button  id="primary" @click = ${() => this.prime()}>${this.primary}</lion-button>` :  nothing
        }
+      </div>
 
+      <div class="secondary">
        ${
-        this.secondary  ?  html `<lion-button class = "secondary" id="secondary" @click = ${() => this.second()}>${this.secondary}</lion-button>` :  nothing
+        this.secondary  ?  html `<lion-button id="secondary" @click = ${() => this.second()}>${this.secondary}</lion-button>` :  nothing
       }
+      </div>
       </footer>
       `;
       }
+
+
       prime(){
         this.dispatchEvent(new CustomEvent('primary', { bubbles: true}));
       }
+
+
       second(){
         this.dispatchEvent(new CustomEvent('secondary', { bubbles: true}));
       }
