@@ -33,6 +33,7 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
       button.classList.remove('selected');
     });
     e.target.classList.add('selected');
+    console.log(e.target.classList.item(1));
   }
 
   static get styles() {
@@ -66,19 +67,28 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <div id="mydiv">
-        <lion-button
-          class="btn"
-          id="en-GB"
-          @click=${e => this.toggleLanguage(e, 'en-GB')}
-          >EN</lion-button
-        >
-        <lion-button
-          class="btn"
-          id="nl-NL"
-          @click=${e => this.toggleLanguage(e, 'nl-NL')}
-          >NL</lion-button
-        >
+        ${this.renderButton({
+          id: 'en-GB',
+          callbackValue: 'en-GB',
+          label: 'EN',
+        })}
+        ${this.renderButton({
+          id: 'nl-NL',
+          callbackValue: 'nl-NL',
+          label: 'NL',
+        })}
       </div>
+    `;
+  }
+
+  renderButton({ id, callbackValue, label }) {
+    return html`
+      <lion-button
+        class="btn"
+        id="${id}"
+        @click=${e => this.toggleLanguage(e, callbackValue)}
+        >${label}</lion-button
+      >
     `;
   }
 }
