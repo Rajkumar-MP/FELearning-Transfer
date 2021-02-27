@@ -1,13 +1,17 @@
 import { LitElement, html, css } from 'lit-element';
-import './Components/fe-header/fe-header.js';
-import './Components/fe-footer/fe-footer.js';
+
 
 export class FeApp extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      btnLabel: { type: String },
+     
     };
+  }
+  
+  constructor() {
+    super();
+    this.title = 'ING Bank';
   }
 
   static get styles() {
@@ -56,10 +60,6 @@ export class FeApp extends LitElement {
   }
 
   render() {
-    return html`
-      <div>
-      <h1> </h1>
-      </div>
-    `;
+    return html` <h1>${this.title}</h1> `;
   }
 }
