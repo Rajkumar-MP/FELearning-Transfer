@@ -53,16 +53,14 @@ export class FeFooter extends LitElement {
           ${this.primary
             ? html`<lion-button
                 class="primary"
-                id="primary"
-                @click=${() => this.prime()}
+                @click=${() => this.primaryclicked()}
                 >${this.primary}</lion-button
               >`
             : nothing}
           ${this.secondary
             ? html`<lion-button
-                id="secondary"
                 class="secondary"
-                @click=${() => this.second()}
+                @click=${() => this.secondaryclicked()}
                 >${this.secondary}</lion-button
               >`
             : nothing}
@@ -71,11 +69,15 @@ export class FeFooter extends LitElement {
     `;
   }
 
-  prime() {
-    this.dispatchEvent(new CustomEvent('primary', { bubbles: true }));
+  primaryclicked() {
+    this.dispatchEvent(
+      new CustomEvent('primary-btn-clicked', { bubbles: true })
+    );
   }
 
-  second() {
-    this.dispatchEvent(new CustomEvent('secondary', { bubbles: true }));
+  secondaryclicked() {
+    this.dispatchEvent(
+      new CustomEvent('secondary-btn-clicked', { bubbles: true })
+    );
   }
 }

@@ -9,10 +9,10 @@ export default {
 function Template({ primary, secondary }) {
   return html`
     <fe-footer
-      primary=${primary}
-      secondary=${secondary}
-      @primary=${() => console.log('primary clicked')}
-      @secondary=${() => console.log('secondary clicked')}
+      .primary=${primary}
+      .secondary=${secondary}
+      @primary-btn-clicked=${() => console.log('primary clicked')}
+      @secondary-btn-clicked=${() => console.log('secondary clicked')}
     >
     </fe-footer>
   `;

@@ -1,14 +1,12 @@
 import { LitElement, html, css } from 'lit-element';
 
-
 export class FeApp extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-     
     };
   }
-  
+
   constructor() {
     super();
     this.title = 'ING Bank';
