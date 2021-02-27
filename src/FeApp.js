@@ -16,7 +16,7 @@ export class FeApp extends LitElement {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        
+
         justify-content: flex-start;
         font-size: calc(10px + 2vmin);
         color: #1a2b42;
@@ -55,13 +55,11 @@ export class FeApp extends LitElement {
     `;
   }
 
-  
-
   render() {
     return html`
-    <div>
-         <fe-footer primary="hello" secondary="back"></fe-footer>
-         </div>
-        `
+      <div>
+        <fe-footer primary="hello" secondary="back"></fe-footer>
+      </div>
+    `;
   }
 }

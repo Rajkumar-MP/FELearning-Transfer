@@ -1,18 +1,18 @@
-import { LitElement, html, css  } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 
-import '@lion/button/lion-button.js'
+import '@lion/button/lion-button.js';
 import { nothing } from 'lit-html';
 
 export class FeFooter extends LitElement {
-    static get properties() {
-        return {
-            primary : {type : String},
-            secondary : {type : String},
-        };
-      }
-      
-      static get styles() {
-        return css`
+  static get properties() {
+    return {
+      primary: { type: String },
+      secondary: { type: String },
+    };
+  }
+
+  static get styles() {
+    return css`
            
       
             .primary {
@@ -44,35 +44,38 @@ export class FeFooter extends LitElement {
                 }
             
            `;
-      }
+  }
 
-    render() {
-      return html`
-     <footer class= "prime">
-     <div class ="primary">
-       ${
-         this.primary  ?  html `<lion-button  id="primary" @click = ${() => this.prime()}>${this.primary}</lion-button>` :  nothing
-       }
-      </div>
-
-      <div class="secondary">
-       ${
-        this.secondary  ?  html `<lion-button id="secondary" @click = ${() => this.second()}>${this.secondary}</lion-button>` :  nothing
-      }
-      </div>
+  render() {
+    return html`
+      <footer class="container">
+        <div id="button">
+          ${this.primary
+            ? html`<lion-button
+                class="primary"
+                id="primary"
+                @click=${() => this.prime()}
+                >${this.primary}</lion-button
+              >`
+            : nothing}
+          ${this.secondary
+            ? html`<lion-button
+                id="secondary"
+                class="secondary"
+                @click=${() => this.second()}
+                >${this.secondary}</lion-button
+              >`
+            : nothing}
+        </div>
       </footer>
-      `;
-      }
+    `;
+  }
 
+  prime() {
+    this.dispatchEvent(new CustomEvent('primary', { bubbles: true }));
+  }
 
-      prime(){
-        this.dispatchEvent(new CustomEvent('primary', { bubbles: true}));
-      }
-
-
-      second(){
-        this.dispatchEvent(new CustomEvent('secondary', { bubbles: true}));
-      }
-    }
-   
-  
+  second() {
+    this.dispatchEvent(new CustomEvent('secondary', { bubbles: true }));
+  }
+}

@@ -8,13 +8,9 @@ describe('FeApp', () => {
     element = await fixture(html`<fe-app></fe-app>`);
   });
 
- 
   it('renders a div', () => {
-    
     const div = element.shadowRoot.querySelector('div');
     expect(div).to.exist;
-   
-  
   });
 
   xit('passes the a11y audit', async () => {
