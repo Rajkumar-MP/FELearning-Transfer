@@ -11,8 +11,8 @@ function Template({ primary, secondary }) {
     <fe-footer
       .primary=${primary}
       .secondary=${secondary}
-      @primary-btn-clicked=${() => console.log('primary clicked')}
-      @secondary-btn-clicked=${() => console.log('secondary clicked')}
+      @primary-btn-click=${() => console.log('primary clicked')}
+      @secondary-btn-click=${() => console.log('secondary clicked')}
     >
     </fe-footer>
   `;

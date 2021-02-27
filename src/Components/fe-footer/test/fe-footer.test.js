@@ -58,28 +58,32 @@ describe('FeFooter', () => {
     expect(noBtnElement).to.be.equal(undefined);
   });
 
-  it('should trigger primary event when the specific button is clicked', async () => {
+  it('should trigger proper event when the specific button is clicked', async () => {
     element.primary = 'Next';
     element.secondary = 'Back';
-    await aTimeout(100);
-    const [primaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
-    );
-    setTimeout(() => primaryBtnElement.click(), 3000);
+    await aTimeout(10);
+    const [
+      primaryBtnElement,
+      secondaryBtnElement,
+    ] = element.shadowRoot.querySelectorAll('lion-button');
+    setTimeout(() => primaryBtnElement.click());
     const { type } = await oneEvent(element, 'primary-btn-click');
     expect(type).to.be.equal('primary-btn-click');
+    expect(secondaryBtnElement).to.have.class('secondary');
   });
 
-  it('should trigger secondary event when the specific button is clicked', async () => {
+  it('should trigger proper event when the spe button is clicked', async () => {
     element.primary = 'Next';
     element.secondary = 'Back';
-    await aTimeout(100);
-    const [secondaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
-    );
+    await aTimeout(10);
+    const [
+      primaryBtnElement,
+      secondaryBtnElement,
+    ] = element.shadowRoot.querySelectorAll('lion-button');
     setTimeout(() => secondaryBtnElement.click());
     const { type } = await oneEvent(element, 'secondary-btn-click');
     expect(type).to.be.equal('secondary-btn-click');
+    expect(primaryBtnElement).to.have.class('primary');
   });
 
   it('passes the a11y audit', async () => {

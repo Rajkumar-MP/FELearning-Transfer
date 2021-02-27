@@ -70,14 +70,12 @@ export class FeFooter extends LitElement {
   }
 
   primaryclicked() {
-    this.dispatchEvent(
-      new CustomEvent('primary-btn-clicked', { bubbles: true })
-    );
+    this.dispatchEvent(new CustomEvent('primary-btn-click', { bubbles: true }));
   }
 
   secondaryclicked() {
     this.dispatchEvent(
-      new CustomEvent('secondary-btn-clicked', { bubbles: true })
+      new CustomEvent('secondary-btn-click', { bubbles: true })
     );
   }
 }
