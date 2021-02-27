@@ -33,7 +33,6 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
       button.classList.remove('selected');
     });
     e.target.classList.add('selected');
-    console.log(e.target.classList.item(1));
   }
 
   static get styles() {
