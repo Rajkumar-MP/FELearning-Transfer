@@ -34,6 +34,7 @@
   "author": "fe-app",
   "license": "MIT",
   "dependencies": {
+    "@lion/button": "^0.9.1",
     "@lion/fieldset": "^0.16.4",
     "@lion/form": "^0.8.4",
     "@lion/form-core": "^0.8.4",
