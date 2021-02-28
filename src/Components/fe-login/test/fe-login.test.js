@@ -11,13 +11,13 @@ describe('FeLogin', () => {
   it('renders a username', () => {
     const username = element.shadowRoot.querySelector('#username');
     expect(username).to.exist;
-    expect(username.textContent).to.equal('username');
+    expect(username.textContent).to.equal('Username');
   });
 
   it('renders a password', () => {
     const password = element.shadowRoot.querySelector('#password');
     expect(password).to.exist;
-    expect(password.textContent).to.equal('password');
+    expect(password.textContent).to.equal('Password');
   });
 
   it('passes the a11y audit', async () => {

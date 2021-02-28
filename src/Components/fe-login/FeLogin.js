@@ -34,6 +34,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
         <form>
           <lion-input
             name="user_name"
+            id="username"
             label="Username"
             .validators="${[
               new Required(null, { getMessage: () => 'Please Enter Username' }),
@@ -45,6 +46,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           ><br />
           <lion-input
             name="password"
+            id="password"
             label="Password"
             .validators="${[
               new Required(null, { getMessage: () => 'Please Enter Password' }),
