@@ -9,12 +9,14 @@ describe('FeLogin', () => {
   });
 
   it('renders a username', () => {
+    element.username = 'Username';
     const username = element.shadowRoot.querySelector('#username');
     expect(username).to.exist;
     expect(username.textContent).to.equal('Username');
   });
 
   it('renders a password', () => {
+    element.password = 'Password';
     const password = element.shadowRoot.querySelector('#password');
     expect(password).to.exist;
     expect(password.textContent).to.equal('Password');
