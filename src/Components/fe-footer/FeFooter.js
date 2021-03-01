@@ -13,37 +13,29 @@ export class FeFooter extends LitElement {
 
   static get styles() {
     return css`
-           
-      
-            .primary {
-            background-color:purple;
-            color:#fff;
-            
-            border-radius;
-            border-radius: 5px;
-            padding: 10px;
-            margin:10px;
-            float :right;
-            
-            }
-            .primary:hover
-            {
-              color:#fffc;
-            }
-            .secondary {
-                background-color:grey;
-                color:#fff;
-                border-radius: 5px;
-                 padding: 10px;
-                 margin:10px;
-                 float : left;
-                }
-                .secondary:hover
-                {
-                  color:#dcdc;
-                }
-            
-           `;
+      .primary {
+        background-color: purple;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        float: right;
+      }
+      .primary:hover {
+        color: #fffc;
+      }
+      .secondary {
+        background-color: grey;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        float: left;
+      }
+      .secondary:hover {
+        color: #dcdc;
+      }
+    `;
   }
 
   render() {
