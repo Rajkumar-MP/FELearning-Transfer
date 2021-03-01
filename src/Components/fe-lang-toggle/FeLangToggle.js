@@ -37,30 +37,28 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
 
   static get styles() {
     return css`
-        div{
+      div {
         display: flex;
-        justify-content:flex-end;
-            }
-  
-        .btn {
-        background-color:#fff;
-        color:#000;
-        border-radius;
+        justify-content: flex-end;
+      }
+
+      .btn {
+        background-color: #fff;
+        color: #000;
         border-radius: 5px;
         padding: 10px;
-        justify-content:right;
-        }
+        justify-content: right;
+      }
 
-        .btn:hover
-        {
-          background-color:#eea2ad;
-        }
+      .btn:hover {
+        background-color: #eea2ad;
+      }
 
-        .selected {
-          border: 2px double #cc2b5e;
-          background-color:#eea2ad;
-        }
-       `;
+      .selected {
+        border: 2px double #cc2b5e;
+        background-color: #eea2ad;
+      }
+    `;
   }
 
   render() {
