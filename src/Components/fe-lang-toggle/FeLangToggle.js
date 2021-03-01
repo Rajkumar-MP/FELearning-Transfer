@@ -45,7 +45,6 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
         .btn {
         background-color:#fff;
         color:#000;
-        border-radius;
         border-radius: 5px;
         padding: 10px;
         justify-content:right;
