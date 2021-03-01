@@ -13,11 +13,6 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
     ];
   }
 
-  // connectedCallback(){
-  //   super.connectedCallback();
-  //   localize.locale='nl-NL';
-  // }
-
   static get properties() {
     return {
       from: { type: String },
