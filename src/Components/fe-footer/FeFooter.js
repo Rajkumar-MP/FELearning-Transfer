@@ -17,9 +17,7 @@ export class FeFooter extends LitElement {
       
             .primary {
             background-color:purple;
-            color:#fff;
-            
-            border-radius;
+            color:#fff;    
             border-radius: 5px;
             padding: 10px;
             margin:10px;
