@@ -9,17 +9,17 @@ describe('FeLogin', () => {
   });
 
   it('renders a username', () => {
-    element.username = 'Username';
+    element.username = 'username';
     const username = element.shadowRoot.querySelector('#username');
     expect(username).to.exist;
-    expect(username.textContent).to.equal('Username');
+    expect(username.textContent).to.equal('username');
   });
 
   it('renders a password', () => {
-    element.password = 'Password';
+    element.password = 'password';
     const password = element.shadowRoot.querySelector('#password');
     expect(password).to.exist;
-    expect(password.textContent).to.equal('Password');
+    expect(password.textContent).to.equal('password');
   });
 
   it('passes the a11y audit', async () => {

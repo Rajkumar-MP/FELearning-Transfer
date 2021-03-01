@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import '@lion/form/lion-form';
 import '@lion/input/lion-input';
 import '@lion/button/lion-button';
-import { LocalizeMixin } from '@lion/localize';
+import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
 
 export class FeLogin extends LocalizeMixin(LitElement) {
@@ -12,6 +12,11 @@ export class FeLogin extends LocalizeMixin(LitElement) {
       ...super.localizeNamespaces,
     ];
   }
+
+  /* connectedCallback(){
+   super.connectedCallback();
+     localize.locale='nl-NL';
+    } */
 
   static get styles() {
     return css`
@@ -30,16 +35,19 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <h2>Login Details</h2>
+
       <lion-form>
         <form>
           <lion-input
-            name="user_name"
+            name="username"
             id="username"
-            label="Username"
+            label=${localize.msg('fe-login:username')}
             .validators="${[
-              new Required(null, { getMessage: () => 'Please Enter Username' }),
+              new Required(null, {
+                getMessage: () => localize.msg('fe-login:usernameerror'),
+              }),
               new MinLength(8, {
-                getMessage: () => 'Minimu 8 Characters are required',
+                getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
           ></lion-input
@@ -47,14 +55,20 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
-            label="Password"
+            label=${localize.msg('fe-login:password')}
             .validators="${[
-              new Required(null, { getMessage: () => 'Please Enter Password' }),
-              new MinLength(8),
+              new Required(null, {
+                getMessage: () => localize.msg('fe-login:passworderror'),
+              }),
+              new MinLength(8, {
+                getMessage: () => localize.msg('fe-login:default'),
+              }),
             ]}"
-          ></lion-input
-          ><br />
-          <lion-button raised>Submit</lion-button>
+          ></lion-input>
+          <br />
+          <lion-button .class="btn" id="btn-text" type="submit">
+            ${localize.msg('fe-login:submit')}</lion-button
+          >
         </form>
       </lion-form>
     `;
