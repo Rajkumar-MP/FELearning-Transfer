@@ -13,10 +13,10 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
     ];
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    localize.locale = 'nl-NL';
-  }
+  // connectedCallback(){
+  //   super.connectedCallback();
+  //   localize.locale='nl-NL';
+  // }
 
   static get properties() {
     return {
@@ -25,14 +25,6 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
       amount: { type: Number },
       remarks: { type: String },
     };
-  }
-
-  constructor() {
-    super();
-    this.from = '456';
-    this.to = '789';
-    this.amount = 5000;
-    this.remarks = 'Fund';
   }
 
   static get styles() {

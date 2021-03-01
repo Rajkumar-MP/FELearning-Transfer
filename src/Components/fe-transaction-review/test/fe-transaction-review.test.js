@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, aTimeout } from '@open-wc/testing';
 
 import '../fe-transaction-review.js';
 
@@ -10,28 +10,30 @@ describe('FeTransactionReview', () => {
     );
   });
 
-  it('renders a heading', () => {
-    const h3 = element.shadowRoot.querySelector('h3');
-    expect(h3).to.exist;
-    expect(h3.textContent).to.equal('Transaction Details');
-  });
-
-  it('renders a from label', () => {
+  it('renders a from label', async () => {
+    element.from = '123456';
+    await aTimeout(10);
     const from = element.shadowRoot.querySelector('#from');
     expect(from).to.exist;
   });
 
-  it('renders a to label', () => {
+  it('renders a to label', async () => {
+    element.to = '123456';
+    await aTimeout(5);
     const to = element.shadowRoot.querySelector('#to');
     expect(to).to.exist;
   });
 
-  it('renders a amount label', () => {
+  it('renders a amount label', async () => {
+    element.amount = 5000;
+    await aTimeout(5);
     const amount = element.shadowRoot.querySelector('#amount');
     expect(amount).to.exist;
   });
 
-  it('renders a remarks label', () => {
+  it('renders a remarks label', async () => {
+    element.remarks = 'Fund Transfer';
+    await aTimeout(5);
     const remarks = element.shadowRoot.querySelector('#remarks');
     expect(remarks).to.exist;
   });
