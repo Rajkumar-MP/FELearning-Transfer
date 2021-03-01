@@ -6,8 +6,12 @@ export class FeApp extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      btnLabel: { type: String },
     };
+  }
+
+  constructor() {
+    super();
+    this.title = 'ING Bank';
   }
 
   static get styles() {
@@ -16,7 +20,7 @@ export class FeApp extends LitElement {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        align-items: center;
+
         justify-content: flex-start;
         font-size: calc(10px + 2vmin);
         color: #1a2b42;
@@ -55,12 +59,7 @@ export class FeApp extends LitElement {
     `;
   }
 
-  constructor() {
-    super();
-    this.title = 'Bank Transfer Application';
-  }
-
   render() {
-    return html` <h1><fe-header></fe-header></h1> `;
+    return html` <h1>${this.title}</h1> `;
   }
 }

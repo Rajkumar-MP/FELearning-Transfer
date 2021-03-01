@@ -6,10 +6,8 @@ export default {
   component: 'fe-login',
 };
 
-function Template({ username, password }) {
-  return html`
-    <fe-login .username=${username} .password=${password}></fe-login>
-  `;
+function Template({ title }) {
+  return html` <fe-login .title=${title}> </fe-login> `;
 }
 
 export const Login = Template.bind({});

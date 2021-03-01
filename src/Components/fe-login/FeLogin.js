@@ -32,6 +32,20 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     `;
   }
 
+  inputValidation() {
+    const form = this.shadowRoot.querySelectorAll('lion-form');
+    if (form.hasFeedbackFor.includes('error')) {
+      const firstFormElWithError = form.formElements.find(el =>
+        el.hasFeedbackFor.includes('error')
+      );
+      firstFormElWithError.focus();
+      firstFormElWithError.classList.add('error-handle');
+
+      return;
+    }
+    this.dispatchEvent(new CustomEvent('primary-btn-click', { bubbles: true }));
+  }
+
   render() {
     return html`
       <h2>Login Details</h2>
@@ -41,7 +55,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="username"
             id="username"
-            label=${localize.msg('fe-login:username')}
+            label="${localize.msg('fe-login:username')}"
             .validators="${[
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:usernameerror'),
@@ -55,7 +69,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
-            label=${localize.msg('fe-login:password')}
+            label="${localize.msg('fe-login:password')}"
             .validators="${[
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:passworderror'),
@@ -66,9 +80,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
             ]}"
           ></lion-input>
           <br />
-          <lion-button .class="btn" id="btn-text" type="submit">
-            ${localize.msg('fe-login:submit')}</lion-button
-          >
+          <fe-footer .primary="${localize.msg('fe-login:submit')}"></fe-footer>
         </form>
       </lion-form>
     `;
