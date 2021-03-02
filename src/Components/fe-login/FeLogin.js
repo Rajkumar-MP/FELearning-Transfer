@@ -13,10 +13,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     ];
   }
 
-  /* connectedCallback(){
-   super.connectedCallback();
-     localize.locale='nl-NL';
-    } */
 
   static get styles() {
     return css`
@@ -33,17 +29,19 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   }
 
   inputValidation() {
-    const form = this.shadowRoot.querySelectorAll('lion-form');
+    const form = this.shadowRoot.querySelector('lion-form');
+    form.submit();
+    const loginData = form.serializedValue;
     if (form.hasFeedbackFor.includes('error')) {
       const firstFormElWithError = form.formElements.find(el =>
         el.hasFeedbackFor.includes('error')
       );
       firstFormElWithError.focus();
       firstFormElWithError.classList.add('error-handle');
-
+         
       return;
     }
-    this.dispatchEvent(new CustomEvent('primary-btn-click', { bubbles: true }));
+    this.dispatchEvent(new CustomEvent('input-validation', { detail : loginData}));
   }
 
   render() {
@@ -69,6 +67,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
+            type = "password"
             label="${localize.msg('fe-login:password')}"
             .validators="${[
               new Required(null, {
@@ -80,7 +79,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
             ]}"
           ></lion-input>
           <br />
-          <fe-footer .primary="${localize.msg('fe-login:submit')}"></fe-footer>
+          <fe-footer .primary=${localize.msg('fe-login:submit')}  @primary-btn-click = ${() =>this.inputValidation() } ></fe-footer>
         </form>
       </lion-form>
     `;
