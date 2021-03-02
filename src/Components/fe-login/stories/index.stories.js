@@ -6,12 +6,10 @@ export default {
   component: 'fe-login',
 };
 
-function Template({ title }) {
-  return html` <fe-login .title=${title}> </fe-login> `;
+function Template() {
+  return html`
+    <fe-login @input-validation=${ev => console.log(ev.detail)}> </fe-login>
+  `;
 }
 
 export const Login = Template.bind({});
-Login.args = {
-  username: 'username',
-  password: 'password',
-};
