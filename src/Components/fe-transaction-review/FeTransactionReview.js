@@ -52,27 +52,27 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
       <h3>Transaction Details</h3>
       <div>
         ${this.from
-          ? nothing
-          : html` <p id="from">
-              <b>${localize.msg('fe-transaction-review:from')}: </b>${this.from}
-            </p>`}
+          ? html` <p id="from">
+              <b>${localize.msg('fe-transaction-review:from')}:</b>${this.from}
+            </p>`
+          : nothing}
         ${this.to
-          ? nothing
-          : html` <p id="to">
-              <b>${localize.msg('fe-transaction-review:to')}: </b>${this.to}
-            </p>`}
+          ? html` <p id="to">
+              <b>${localize.msg('fe-transaction-review:to')}:</b>${this.to}
+            </p>`
+          : nothing}
         ${this.amount
-          ? nothing
-          : html` <p id="amount">
-              <b>${localize.msg('fe-transaction-review:amount')}: </b>${this
+          ? html` <p id="amount">
+              <b>${localize.msg('fe-transaction-review:amount')}:</b>${this
                 .amount}
-            </p>`}
+            </p>`
+          : nothing}
         ${this.remarks
-          ? nothing
-          : html` <p id="remarks">
-              <b>${localize.msg('fe-transaction-review:remarks')}: </b>${this
+          ? html` <p id="remarks">
+              <b>${localize.msg('fe-transaction-review:remarks')}:</b>${this
                 .remarks}
-            </p>`}
+            </p>`
+          : nothing}
       </div>
     `;
   }
