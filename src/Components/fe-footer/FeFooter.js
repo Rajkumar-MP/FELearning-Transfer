@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-import '@lion/button/lion-button.js';
+import '@lion/button';
 import { nothing } from 'lit-html';
 
 export class FeFooter extends LitElement {
