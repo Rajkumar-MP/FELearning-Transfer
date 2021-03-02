@@ -13,7 +13,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     ];
   }
 
-
   static get styles() {
     return css`
       form {
@@ -38,10 +37,12 @@ export class FeLogin extends LocalizeMixin(LitElement) {
       );
       firstFormElWithError.focus();
       firstFormElWithError.classList.add('error-handle');
-         
+
       return;
     }
-    this.dispatchEvent(new CustomEvent('input-validation', { detail : loginData}));
+    this.dispatchEvent(
+      new CustomEvent('input-validation', { detail: loginData })
+    );
   }
 
   render() {
@@ -67,7 +68,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
-            type = "password"
+            type="password"
             label="${localize.msg('fe-login:password')}"
             .validators="${[
               new Required(null, {
@@ -79,7 +80,10 @@ export class FeLogin extends LocalizeMixin(LitElement) {
             ]}"
           ></lion-input>
           <br />
-          <fe-footer .primary=${localize.msg('fe-login:submit')}  @primary-btn-click = ${() =>this.inputValidation() } ></fe-footer>
+          <fe-footer
+            .primary=${localize.msg('fe-login:submit')}
+            @primary-btn-click=${() => this.inputValidation()}
+          ></fe-footer>
         </form>
       </lion-form>
     `;
