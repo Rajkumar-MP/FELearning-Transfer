@@ -51,11 +51,9 @@ export class FeHeader extends LitElement {
 
   render() {
     return html`
-      <main>
-        <header>
-          <h1>${this.title}</h1>
-        </header>
-      </main>
+      <header>
+        <h1>${this.title}</h1>
+      </header>
     `;
   }
 }

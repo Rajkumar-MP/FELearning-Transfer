@@ -19,7 +19,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "test": "web-test-runner --coverage",
+    "test": "web-test-runner --coverage ",
     "test:watch": "web-test-runner --watch",
     "storybook": "web-dev-server -c .storybook/server.mjs",
     "storybook:build": "build-storybook",
@@ -34,7 +34,10 @@
   "author": "fe-app",
   "license": "MIT",
   "dependencies": {
-    "@lion/form": "^0.8.1",
+    "@lion/button": "^0.8.11",
+    "@lion/form": "^0.7.18",
+    "@lion/input": "^0.11.1",
+    "@lion/localize": "^0.16.0",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0"
   },
@@ -59,5 +62,17 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "main": "rollup.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajkumar-MP/FELearning-Transfer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rajkumar-MP/FELearning-Transfer/issues"
+  },
+  "homepage": "https://github.com/Rajkumar-MP/FELearning-Transfer#readme"
 }
