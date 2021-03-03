@@ -15,6 +15,11 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
     ];
   }
 
+  firstUpdated() {
+    super.firstUpdated();
+    localize.locale = 'nl-NL';
+  }
+
   static get styles() {
     return css`
       form {
@@ -63,13 +68,14 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-select
-            name="From Account"
+            name="fromaccount"
             label="${localize.msg('fe-fund-transfer:fromaccount')}"
             class="accountinp"
+            id="fromaccount"
             .validators="${[
               new Required(null, {
                 getMessage: () =>
-                  html`<p style="color:red; font-size:15px;">
+                  html`<p style="color:#830F07; font-size:20px;">
                     ${localize.msg('fe-fund-transfer:accounttypeerror')}
                   </p>`,
               }),
@@ -83,13 +89,14 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           </lion-select>
 
           <lion-select
-            name="To Account"
+            name="toaccount"
             label="${localize.msg('fe-fund-transfer:toaccount')}"
             class="accountinp"
+            id="toaccount"
             .validators="${[
               new Required(null, {
                 getMessage: () =>
-                  html`<p style="color:red; font-size:15px;">
+                  html`<p style="color:#830F07; font-size:20px;">
                     ${localize.msg('fe-fund-transfer:accounttypeerror')}
                   </p>`,
               }),
@@ -109,7 +116,7 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
             .validators="${[
               new Required(null, {
                 getMessage: () =>
-                  html`<p style="color:red; font-size:15px;">
+                  html`<p style="color:#830F07; font-size:20px;">
                     ${localize.msg('fe-fund-transfer:amounterror')}
                   </p>`,
               }),
@@ -124,13 +131,13 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
             .validators="${[
               new Required(null, {
                 getMessage: () =>
-                  html`<p style="color:red; font-size:15px;">
+                  html`<p style="color:#830F07; font-size:20px;">
                     ${localize.msg('fe-fund-transfer:amounterror')}
                   </p>`,
               }),
               new MinLength(8, {
                 getMessage: () =>
-                  html`<p style="color:red; font-size:15px;">
+                  html`<p style="color:#830F07; font-size:20px;">
                     ${localize.msg('fe-fund-transfer:remarkserror')}
                   </p>`,
               }),

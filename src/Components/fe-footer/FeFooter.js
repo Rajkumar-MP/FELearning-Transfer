@@ -14,23 +14,27 @@ export class FeFooter extends LitElement {
   static get styles() {
     return css`
       .primary {
-        background-color: purple;
-        color: #fff;
+        background-color: #2c0b82;
+        color: #ffffff;
         border-radius: 5px;
         padding: 10px;
         margin: 10px;
         float: right;
+        font-size: 20px;
+        font-weight: normal;
       }
       .primary:hover {
-        color: #fffc;
+        color: #ffffff;
       }
       .secondary {
-        background-color: grey;
-        color: #fff;
+        background-color: #53505a;
+        color: #ffffff;
         border-radius: 5px;
         padding: 10px;
         margin: 10px;
+        font-size: 20px;
         float: left;
+        font-weight: normal;
       }
       .secondary:hover {
         color: #dcdc;
