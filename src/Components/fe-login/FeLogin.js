@@ -26,11 +26,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     `;
   }
 
-  inputValidation() {
-    const form = this.shadowRoot.querySelector('lion-form');
-    form.submit();
-  }
-
   triggerSubmit() {
     const form = this.shadowRoot.querySelector('lion-form');
     form.submit();
@@ -40,18 +35,15 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     const { hasFeedbackFor, formElements, serializedValue } = ev.target;
     if (hasFeedbackFor.includes('error')) {
       const firstFormElWithError = formElements.find(el =>
-        el.hasFeedbackFor.imcludes('error')
+        el.hasFeedbackFor.includes('error')
       );
       firstFormElWithError.focus();
       firstFormElWithError.classList.add('error-handle');
 
       return;
     }
-    this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: serializedValue })
-    );
 
-    const loginData = ev.target.serializedValue;
+    const loginData = serializedValue;
     this.dispatchEvent(
       new CustomEvent('input-validation', { detail: loginData })
     );
@@ -60,7 +52,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   render() {
     return html`
       <h2>Login Details</h2>
-      <lion-form>
+      <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input
             name="username"

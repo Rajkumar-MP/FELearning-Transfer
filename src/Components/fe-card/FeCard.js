@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 
+import defaultStyles from '../../FeApp.style.js';
+
 export class FeCard extends LitElement {
   static get properties() {
     return {
@@ -16,6 +18,7 @@ export class FeCard extends LitElement {
 
   static get styles() {
     return css`
+      ${defaultStyles}
       :host {
         display: inline-block;
         padding: 8px;

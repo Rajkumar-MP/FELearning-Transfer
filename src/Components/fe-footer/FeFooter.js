@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 
 import '@lion/button/lion-button';
 import { nothing } from 'lit-html';
+import defaultStyles from '../../FeApp.style.js';
 
 export class FeFooter extends LitElement {
   static get properties() {
@@ -13,45 +14,24 @@ export class FeFooter extends LitElement {
 
   static get styles() {
     return css`
-      .primary {
-        background-color: purple;
-        color: #fff;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-        float: right;
-      }
-      .primary:hover {
-        color: #fffc;
-      }
-      .secondary {
-        background-color: grey;
-        color: #fff;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-        float: left;
-      }
-      .secondary:hover {
-        color: #dcdc;
-      }
+      ${defaultStyles}
     `;
   }
 
   render() {
     return html`
       <footer class="container">
-        <div id="button">
+        <div>
           ${this.primary
             ? html`<lion-button
-                class="primary"
+                class="button primary--background--color float-right"
                 @click=${() => this.primaryclicked()}
                 >${this.primary}</lion-button
               >`
             : nothing}
           ${this.secondary
             ? html`<lion-button
-                class="secondary"
+                class="button secondary--background--color float-left"
                 @click=${() => this.secondaryclicked()}
                 >${this.secondary}</lion-button
               >`

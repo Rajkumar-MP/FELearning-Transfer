@@ -1,4 +1,4 @@
-import { html, fixture, expect, aTimeout, oneEvent } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 
 import '../fe-login.js';
 
@@ -8,24 +8,15 @@ describe('FeLogin', () => {
     element = await fixture(html`<fe-login></fe-login>`);
   });
 
-  it('should trigger proper event when the submit button is clicked', async () => {
-    element.primary = 'submit';
+  it('the input validation event should be triggered on clicking submit', async () => {
+    const usernameElement = element.shadowRoot.querySelector('#username');
+    // const passwordElement =element.shadowRoot.querySelector('#password');
+    usernameElement.modelValue = 'loginId';
+    // passwordElement.modelValue='Password';
 
-    await aTimeout(10);
-    const primaryBtnElement = element.shadowRoot.querySelector('lion-form');
-    setTimeout(() => primaryBtnElement.click());
-    const { type } = await oneEvent(element, 'primary-btn-click');
-    expect(type).to.be.equal('primary-btn-click');
-    expect(primaryBtnElement).to.have.class('primary');
-  });
-
-  it('can await an event', async () => {
-    setTimeout(() => element.triggerSubmit());
-
-    const { detail } = await oneEvent(element, 'loginData');
-
-    expect(element.loginData).to.be.true;
-    expect(detail).to.be.true;
+    const myfunction = element.submitForm;
+    const { detail } = await oneEvent(myfunction, 'change');
+    expect(detail).to.equal('loginId');
   });
 
   it('passes the a11y audit', async () => {

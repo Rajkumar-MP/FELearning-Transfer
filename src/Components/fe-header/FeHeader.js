@@ -23,7 +23,7 @@ export class FeHeader extends LitElement {
         text-align: center;
       }
 
-      main {
+      header {
         flex-grow: 1;
         background-color: #b90e0a;
         width: 100%;
@@ -51,11 +51,9 @@ export class FeHeader extends LitElement {
 
   render() {
     return html`
-      <main>
-        <header>
-          <h1>${this.title}</h1>
-        </header>
-      </main>
+      <header>
+        <h1>${this.title}</h1>
+      </header>
     `;
   }
 }
