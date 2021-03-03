@@ -37,92 +37,113 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
   triggerSubmit() {
     const form = this.shadowRoot.querySelector('lion-form');
     form.submit();
-    if (form.hasFeedbackFor.includes('error')) {
-      const firstFormElWithError = form.formElements.find(el =>
+  }
+
+  submitForm(ev) {
+    const { hasFeedbackFor, formElements, serializedValue } = ev.target;
+    if (hasFeedbackFor.includes('error')) {
+      const firstFormElWithError = formElements.find(el =>
         el.hasFeedbackFor.includes('error')
       );
       firstFormElWithError.focus();
+      firstFormElWithError.classList.add('error-handle');
+
       return;
     }
-    const formData = form.serializedValue;
+
+    const fundData = serializedValue;
     this.dispatchEvent(
-      new CustomEvent('fund-validation', { detail: formData })
+      new CustomEvent('fund-validation', { detail: fundData })
     );
   }
 
   render() {
     return html`
       <h2>Fund Transfer</h2>
-      <lion-form>
-        <lion-select
-          name="From Account"
-          label="${localize.msg('fe-fund-transfer:fromaccount')}"
-          class="accountinp"
-          .validators="${[
-            new Required(null, {
-              getMessage: () =>
-                localize.msg('fe-fund-transfer:accounttypeerror'),
-            }),
-          ]}"
-        >
-          <select slot="input">
-            <option selected hidden value>Please select</option>
-            <option value="savings">Savings</option>
-            <option value="current">Current</option>
-          </select>
-        </lion-select>
+      <lion-form @submit=${this.submitForm}>
+        <form>
+          <lion-select
+            name="From Account"
+            label="${localize.msg('fe-fund-transfer:fromaccount')}"
+            class="accountinp"
+            .validators="${[
+              new Required(null, {
+                getMessage: () =>
+                  html`<p style="color:red; font-size:15px;">
+                    ${localize.msg('fe-fund-transfer:accounttypeerror')}
+                  </p>`,
+              }),
+            ]}"
+          >
+            <select slot="input">
+              <option selected hidden value>Please select</option>
+              <option value="savings">Savings</option>
+              <option value="current">Current</option>
+            </select>
+          </lion-select>
 
-        <lion-select
-          name="To Account"
-          label="${localize.msg('fe-fund-transfer:toaccount')}"
-          class="accountinp"
-          .validators="${[
-            new Required(null, {
-              getMessage: () =>
-                localize.msg('fe-fund-transfer:accounttypeerror'),
-            }),
-          ]}"
-        >
-          <select slot="input">
-            <option selected hidden value>Please select</option>
-            <option value="savings">Savings</option>
-            <option value="current">Current</option>
-          </select>
-        </lion-select>
-        <lion-input
-          name="amount"
-          id="amount"
-          label="${localize.msg('fe-fund-transfer:amount')}"
-          class="accountinp"
-          type="number"
-          .validators="${[
-            new Required(null, {
-              getMessage: () => localize.msg('fe-fund-transfer:amounterror'),
-            }),
-          ]}"
-        ></lion-input>
+          <lion-select
+            name="To Account"
+            label="${localize.msg('fe-fund-transfer:toaccount')}"
+            class="accountinp"
+            .validators="${[
+              new Required(null, {
+                getMessage: () =>
+                  html`<p style="color:red; font-size:15px;">
+                    ${localize.msg('fe-fund-transfer:accounttypeerror')}
+                  </p>`,
+              }),
+            ]}"
+          >
+            <select slot="input">
+              <option selected hidden value>Please select</option>
+              <option value="savings">Savings</option>
+              <option value="current">Current</option>
+            </select>
+          </lion-select>
+          <lion-input
+            name="amount"
+            id="amount"
+            label="${localize.msg('fe-fund-transfer:amount')}"
+            class="accountinp"
+            .validators="${[
+              new Required(null, {
+                getMessage: () =>
+                  html`<p style="color:red; font-size:15px;">
+                    ${localize.msg('fe-fund-transfer:amounterror')}
+                  </p>`,
+              }),
+            ]}"
+          ></lion-input>
 
-        <lion-input
-          name="remarks"
-          id="remarks"
-          label="Remarks"
-          class="accountinp"
-          .validators="${[
-            new Required(null, {
-              getMessage: () => localize.msg('fe-fund-transfer:amounterror'),
-            }),
-            new MinLength(8, {
-              getMessage: () => localize.msg('fe-fund-transfer:remarkserror'),
-            }),
-          ]}"
-        ></lion-input>
-        <fe-footer
-          primary=${localize.msg('fe-fund-transfer:continue')}
-          secondary=${localize.msg('fe-fund-transfer:cancel')}
-          class="accountinp"
-          @primary-btn-click=${() => this.triggerSubmit()}
-        >
-        </fe-footer>
+          <lion-input
+            name="remarks"
+            id="remarks"
+            label="${localize.msg('fe-fund-transfer:remarks')}"
+            class="accountinp"
+            .validators="${[
+              new Required(null, {
+                getMessage: () =>
+                  html`<p style="color:red; font-size:15px;">
+                    ${localize.msg('fe-fund-transfer:amounterror')}
+                  </p>`,
+              }),
+              new MinLength(8, {
+                getMessage: () =>
+                  html`<p style="color:red; font-size:15px;">
+                    ${localize.msg('fe-fund-transfer:remarkserror')}
+                  </p>`,
+              }),
+            ]}"
+          ></lion-input>
+          <fe-footer
+            primary=${localize.msg('fe-fund-transfer:continue')}
+            secondary=${localize.msg('fe-fund-transfer:cancel')}
+            class="accountinp"
+            @primary-btn-click=${() => this.triggerSubmit()}
+          >
+          </fe-footer>
+        </form>
       </lion-form>
     `;
   }

@@ -41,7 +41,8 @@
     "@lion/localize": "^0.16.0",
     "@lion/select": "^0.9.4",
     "lit-element": "^2.0.1",
-    "lit-html": "^1.0.0"
+    "lit-html": "^1.0.0",
+    "node-modules": "^1.0.1"
   },
   "eslintConfig": {
     "extends": [
