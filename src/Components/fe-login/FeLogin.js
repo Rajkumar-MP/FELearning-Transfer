@@ -4,6 +4,7 @@ import '@lion/input/lion-input';
 import '@lion/button/lion-button';
 import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
+import defaultStyles from '../../FeApp.style.js';
 
 export class FeLogin extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
@@ -15,14 +16,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
 
   static get styles() {
     return css`
-      form {
-        width: 600px;
-        padding: 20px;
-        font-size: 20px;
-      }
-      h2 {
-        margin: 20px;
-      }
+      ${defaultStyles}
     `;
   }
 
