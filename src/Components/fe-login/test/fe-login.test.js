@@ -1,4 +1,4 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
 
 import '../fe-login.js';
 
@@ -9,14 +9,18 @@ describe('FeLogin', () => {
   });
 
   it('the input validation event should be triggered on clicking submit', async () => {
-    const usernameElement = element.shadowRoot.querySelector('#username');
-    // const passwordElement =element.shadowRoot.querySelector('#password');
-    usernameElement.modelValue = 'loginId';
-    // passwordElement.modelValue='Password';
+    const username = element.shadowRoot.querySelector('#username');
+    const password = element.shadowRoot.querySelector('#password');
 
-    const myfunction = element.submitForm;
-    const { detail } = await oneEvent(myfunction, 'change');
-    expect(detail).to.equal('loginId');
+    username.modelValue = 'loginId';
+    password.modelValue = 'password';
+    const form = element.shadowRoot.querySelector('lion-form');
+    setTimeout(() => form.submit());
+    const { detail } = await oneEvent(element, 'input-validation');
+    assert.deepEqual(detail, {
+      username: 'loginId',
+      password: 'password',
+    });
   });
 
   it('passes the a11y audit', async () => {

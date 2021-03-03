@@ -57,6 +57,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="username"
             id="username"
+            autocomplete="off"
             label="${localize.msg('fe-login:username')}"
             .validators="${[
               new Required(null, {
@@ -77,6 +78,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
+            autocomplete="off"
             type="password"
             label="${localize.msg('fe-login:password')}"
             .validators="${[
