@@ -7,7 +7,11 @@ export default {
 };
 
 function Template() {
-  return html` <fe-new-payee></fe-new-payee> `;
+  return html`
+    <fe-new-payee
+      @input-validation=${ev => console.log(ev.detail)}
+    ></fe-new-payee>
+  `;
 }
 
 export const NewPayee = Template.bind({});
