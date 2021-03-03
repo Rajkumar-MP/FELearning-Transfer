@@ -74,7 +74,7 @@ describe('FeFooter', () => {
     element.primary = 'Next';
     element.secondary = 'Back';
     await aTimeout(10);
-    const [secondaryBtnElement] = element.shadowRoot.querySelectorAll(
+    const [, secondaryBtnElement] = element.shadowRoot.querySelectorAll(
       'lion-button'
     );
     setTimeout(() => secondaryBtnElement.click());
