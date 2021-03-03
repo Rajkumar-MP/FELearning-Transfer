@@ -23,11 +23,6 @@ describe('FeLogin', () => {
     });
   });
 
-  it(function (done) {
-    done();
-    this.timeout(10000);
-  });
-
   it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
