@@ -19,7 +19,7 @@ export class FeFooter extends LitElement {
 
   render() {
     return html`
-      <footer class="container">
+      <footer>
         <div>
           ${this.primary
             ? html`<lion-button
