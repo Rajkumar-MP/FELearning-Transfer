@@ -62,7 +62,8 @@ export default css`
   .secondary--color {
     color: ${secondaryColor};
   }
-  .form--input--field input {
+  .form--input--field input,
+  .form--input--field select {
     border: 1px solid;
     border-radius: 6px;
     padding: 8px;
@@ -74,6 +75,9 @@ export default css`
     padding: 8px;
     outline: 2px solid transparent;
     outline-offset: 2px;
+  }
+  .form--input--field [data-tag-name='lion-validation-feedback'] {
+    color: red;
   }
   @media only screen and (min-width: 48em) {
     .container {
