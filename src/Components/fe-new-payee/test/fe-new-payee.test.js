@@ -1,4 +1,4 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
 
 import '../fe-new-payee.js';
 
@@ -8,10 +8,26 @@ describe('FeNewPayee', () => {
     element = await fixture(html`<fe-new-payee></fe-new-payee>`);
   });
 
-  xit('renders a english button Label', () => {
-    const EngButton = element.shadowRoot.querySelector('#en-GB');
-    expect(EngButton).to.exist;
-    expect(EngButton.textContent).to.equal('EN');
+  it('renders a english button Label', async () => {
+    const nickname = element.shadowRoot.querySelector('#nickname');
+    const accountholdername = element.shadowRoot.querySelector(
+      '#accountholdername'
+    );
+    const accountnumber = element.shadowRoot.querySelector('#accountnumber');
+    const ifsc = element.shadowRoot.querySelector('#ifsc');
+    nickname.modelValue = 'nickname';
+    accountholdername.modelValue = 'accountholder';
+    accountnumber.modelValue = 123456;
+    ifsc.modelValue = 'ifsccode';
+    const form = element.shadowRoot.querySelector('lion-form');
+    setTimeout(() => form.submit());
+    const { detail } = await oneEvent(element, 'input-validation');
+    assert.deepEqual(detail, {
+      nickname: 'nickname',
+      accountholdername: 'accountholder',
+      accountnumber: 123456,
+      ifsc: 'ifsccode',
+    });
   });
 
   it('passes the a11y audit', async () => {

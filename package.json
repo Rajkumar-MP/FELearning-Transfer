@@ -39,6 +39,7 @@
     "@lion/form-core": "^0.8.4",
     "@lion/input": "^0.11.4",
     "@lion/localize": "^0.16.1",
+    "deep-equal": "^2.0.5",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
     "node-modules": "^1.0.1",
