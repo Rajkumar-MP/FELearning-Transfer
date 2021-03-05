@@ -34,9 +34,8 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
       return;
     }
 
-    const PayeeData = serializedValue;
     this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: PayeeData })
+      new CustomEvent('input-validation', { detail: serializedValue })
     );
   }
 
