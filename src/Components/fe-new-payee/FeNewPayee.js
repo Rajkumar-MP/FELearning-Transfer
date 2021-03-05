@@ -3,7 +3,7 @@ import { localize, LocalizeMixin } from '@lion/localize';
 import { Required } from '@lion/form-core';
 import defaultStyles from '../../FeApp.style.js';
 
-import '@lion/button/';
+import '@lion/button';
 import '@lion/form/lion-form';
 import '@lion/input/lion-input';
 
