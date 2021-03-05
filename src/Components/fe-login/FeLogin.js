@@ -52,20 +52,14 @@ export class FeLogin extends LocalizeMixin(LitElement) {
             name="username"
             id="username"
             autocomplete="off"
-            class="form-input-field"
+            class="form--input--field"
             label="${localize.msg('fe-login:username')}"
             .validators="${[
               new Required(null, {
-                getMessage: () =>
-                  html`<p style="color:red;">
-                    ${localize.msg('fe-login:usernameerror')}
-                  </p>`,
+                getMessage: () => localize.msg('fe-login:usernameerror'),
               }),
               new MinLength(8, {
-                getMessage: () =>
-                  html`<p style="color:red;">
-                    ${localize.msg('fe-login:default')}
-                  </p>`,
+                getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
           ></lion-input
@@ -73,22 +67,16 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           <lion-input
             name="password"
             id="password"
-            class="form-input-field"
+            class="form--input--field"
             autocomplete="off"
             type="password"
             label="${localize.msg('fe-login:password')}"
             .validators="${[
               new Required(null, {
-                getMessage: () =>
-                  html`<p style="color:red;">
-                    ${localize.msg('fe-login:passworderror')}
-                  </p>`,
+                getMessage: () => localize.msg('fe-login:passworderror'),
               }),
               new MinLength(8, {
-                getMessage: () =>
-                  html`<p style="color:red;">
-                    ${localize.msg('fe-login:default')}
-                  </p>`,
+                getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
           ></lion-input>

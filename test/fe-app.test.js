@@ -8,7 +8,7 @@ describe('FeApp', () => {
     element = await fixture(html`<fe-app></fe-app>`);
   });
 
-  xit('passes the a11y audit', async () => {
+  it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });

@@ -12,13 +12,13 @@ describe('FeLogin', () => {
     const username = element.shadowRoot.querySelector('#username');
     const password = element.shadowRoot.querySelector('#password');
 
-    username.modelValue = 'loginId';
+    username.modelValue = 'username';
     password.modelValue = 'password';
     const form = element.shadowRoot.querySelector('lion-form');
     setTimeout(() => form.submit());
     const { detail } = await oneEvent(element, 'input-validation');
     assert.deepEqual(detail, {
-      username: 'loginId',
+      username: 'username',
       password: 'password',
     });
   });
