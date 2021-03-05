@@ -16,15 +16,28 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
     ];
   }
 
+  static get properties() {
+    return {
+      accountInfo: { type: Array },
+    };
+  }
+
+  constructor() {
+    super();
+    this.accountInfo = [
+      {
+        type: 'SAVING',
+        number: '9876543210',
+        balance: '25000',
+      },
+      { type: 'CURRENT', number: '9876553210', balance: '20000' },
+    ];
+  }
+
   static get styles() {
     return css`
       ${defaultStyles}
     `;
-  }
-
-  firstUpdated() {
-    super.firstUpdated();
-    localize.locale = 'en-GB';
   }
 
   triggerSubmit() {
@@ -44,9 +57,8 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
       return;
     }
 
-    const fundData = serializedValue;
     this.dispatchEvent(
-      new CustomEvent('fund-validation', { detail: fundData })
+      new CustomEvent('fund-validation', { detail: serializedValue })
     );
   }
 
@@ -69,8 +81,11 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           >
             <select slot="input">
               <option selected hidden value>Please select</option>
-              <option value="savings">Savings</option>
-              <option value="current">Current</option>
+              ${this.accountInfo.forEach(
+                account => html` <option value=${account.accountDetails.number}>
+                  ${account.accountDetails.type}
+                </option>`
+              )}
             </select>
           </lion-select>
 

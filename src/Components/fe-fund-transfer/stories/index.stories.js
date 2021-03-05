@@ -6,9 +6,12 @@ export default {
   component: 'fe-fund-transfer',
 };
 
-function Template() {
+function Template({ accountInfo }) {
   return html`
-    <fe-fund-transfer @fund-validation=${ev => console.log(ev.detail)}>
+    <fe-fund-transfer
+      @fund-validation=${ev => console.log(ev.detail)}
+      .accountInfo=${accountInfo}
+    >
     </fe-fund-transfer>
   `;
 }
