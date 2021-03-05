@@ -18,20 +18,8 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
 
   static get properties() {
     return {
-      accountInfo: { type: Array },
+      args: { type: Object },
     };
-  }
-
-  constructor() {
-    super();
-    this.accountInfo = [
-      {
-        type: 'SAVING',
-        number: '9876543210',
-        balance: '25000',
-      },
-      { type: 'CURRENT', number: '9876553210', balance: '20000' },
-    ];
   }
 
   static get styles() {
@@ -81,10 +69,9 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           >
             <select slot="input">
               <option selected hidden value>Please select</option>
-              ${this.accountInfo.forEach(
-                account => html` <option value=${account.accountDetails.number}>
-                  ${account.accountDetails.type}
-                </option>`
+              ${this.accountDetails.map(
+                account =>
+                  html`<option value=${account.number}>${account.type}</option>`
               )}
             </select>
           </lion-select>
@@ -103,8 +90,12 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           >
             <select slot="input">
               <option selected hidden value>Please select</option>
-              <option value="savings">Savings</option>
-              <option value="current">Current</option>
+              ${this.payeeList.map(
+                payee =>
+                  html`<option value=${payee.accountNo}>
+                    ${payee.nickName}
+                  </option>`
+              )}
             </select>
           </lion-select>
 
