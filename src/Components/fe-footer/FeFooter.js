@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
-import '@lion/button';
+
+import '@lion/button/lion-button';
 import { nothing } from 'lit-html';
 import defaultStyles from '../../FeApp.style.js';
 
@@ -19,7 +20,7 @@ export class FeFooter extends LitElement {
 
   render() {
     return html`
-      <footer>
+      <footer class="container">
         <div>
           ${this.primary
             ? html`<lion-button
