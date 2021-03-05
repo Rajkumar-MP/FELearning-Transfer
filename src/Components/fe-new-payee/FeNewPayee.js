@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { localize, LocalizeMixin } from '@lion/localize';
 import { Required } from '@lion/form-core';
+import defaultStyles from '../../FeApp.style.js';
 
 import '@lion/button/';
 import '@lion/form/lion-form';
@@ -45,21 +46,10 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
 
   static get styles() {
     return css`
+      ${defaultStyles}
       div {
         display: flex;
         justify-content: flex-end;
-      }
-
-      .btn {
-        background-color: #fff;
-        color: #000;
-        border-radius: 5px;
-        padding: 10px;
-        justify-content: right;
-      }
-
-      .btn:hover {
-        background-color: #eea2ad;
       }
     `;
   }
@@ -70,6 +60,7 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input
+            class="form--input--field"
             name="nickname"
             id="nickname"
             label="${localize.msg('fe-new-payee:nickname')}"
@@ -83,6 +74,7 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
           <lion-input
             name="accountholdername"
             id="accountholdername"
+            class="form--input--field"
             label="${localize.msg('fe-new-payee:accountholdername')}"
             .validators="${[
               new Required(null, {
@@ -94,6 +86,7 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
           <lion-input
             name="accountnumber"
             id="accountnumber"
+            class="form--input--field"
             type="number"
             label="${localize.msg('fe-new-payee:accountnumber')}"
             .validators="${[
@@ -106,6 +99,7 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
           <lion-input
             name="ifsc"
             id="ifsc"
+            class="form--input--field"
             label="${localize.msg('fe-new-payee:ifsc')}"
             .validators="${[
               new Required(null, {

@@ -8,7 +8,7 @@ describe('FeNewPayee', () => {
     element = await fixture(html`<fe-new-payee></fe-new-payee>`);
   });
 
-  it('renders a english button Label', async () => {
+  it('the input validation event should be triggered on clicking submit', async () => {
     const nickname = element.shadowRoot.querySelector('#nickname');
     const accountholdername = element.shadowRoot.querySelector(
       '#accountholdername'
