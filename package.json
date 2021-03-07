@@ -34,7 +34,7 @@
   "author": "fe-app",
   "license": "MIT",
   "dependencies": {
-    "@babel/eslint-plugin": "^7.11.0",
+
     "@lion/button": "^0.8.10",
     "@lion/form": "^0.7.18",
     "@lion/form-core": "^0.8.4",

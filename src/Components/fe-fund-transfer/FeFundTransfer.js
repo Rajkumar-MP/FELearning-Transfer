@@ -18,8 +18,15 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
 
   static get properties() {
     return {
-      args: { type: Object },
+      accountDetails: { type: Array },
+      payeeList: { type: Array },
     };
+  }
+
+  constructor() {
+    super();
+    this.accountDetails = [];
+    this.payeeList = [];
   }
 
   static get styles() {
