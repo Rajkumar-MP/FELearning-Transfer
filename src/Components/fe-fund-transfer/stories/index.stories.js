@@ -17,8 +17,8 @@ function Template({ accountDetails, payeeList }) {
   `;
 }
 
-export const FeFundTransfer = Template.bind({});
-FeFundTransfer.args = {
+export const FundTransfer = Template.bind({});
+FundTransfer.args = {
   accountDetails: [
     {
       type: 'SAVING',

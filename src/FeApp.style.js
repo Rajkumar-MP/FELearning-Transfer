@@ -69,7 +69,8 @@ export default css`
     padding: 8px;
     margin-top: 8px;
   }
-  .form--input--field input:focus {
+  .form--input--field input:focus,
+  .form--input--field select:focus {
     border: 2px solid ${primaryColor};
     border-radius: 6px;
     padding: 8px;
