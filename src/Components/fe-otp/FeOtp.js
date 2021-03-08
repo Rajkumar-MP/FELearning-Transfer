@@ -45,7 +45,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h1>Login Details</h1>
+      <h1>${localize.msg('fe-otp:LoginDetails')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input
