@@ -1,4 +1,5 @@
 export default {
+  fundtransfer: 'Fund Transfer',
   fromaccount: 'From Account ',
   toaccount: 'To Account ',
   amount: ' Amount',

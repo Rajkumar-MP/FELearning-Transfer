@@ -59,7 +59,7 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h1>Fund Transfer</h1>
+      <h1>${localize.msg('fe-fund-transfer:fundtransfer')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-select
