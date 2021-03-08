@@ -8,17 +8,10 @@ describe('FeFundTransfer', () => {
     element = await fixture(html`<fe-fund-transfer></fe-fund-transfer>`);
   });
 
-  it('should give error when form is not filled', () => {
-    const form = element.shadowRoot.querySelector('lion-form').hasFeedbackFor;
-    expect(form).to.exist;
-    expect(form).to.includes('error');
-  });
+ 
 
-  it('should not have any predefined value in the form', () => {
-    const form = element.shadowRoot.querySelector('lion-form').value;
-    expect(form).to.exist;
-    expect(form.value).to.be.equal(undefined);
-  });
+  
+
   it('renders the proper ids', async () => {
     const fromaccount = element.shadowRoot.querySelector('#fromaccount');
     const toaccount = element.shadowRoot.querySelector('#toaccount');
@@ -29,9 +22,7 @@ describe('FeFundTransfer', () => {
     amount.modelValue = 123456;
     remarks.modelValue = 'verygood';
 
-    const form = element.shadowRoot.querySelector('lion-form');
-
-    setTimeout(() => form.submit());
+    setTimeout(() => element.triggerSubmit());
 
     const { detail } = await oneEvent(element, 'fund-validation');
 

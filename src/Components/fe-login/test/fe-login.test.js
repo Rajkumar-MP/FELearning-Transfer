@@ -15,7 +15,7 @@ describe('FeLogin', () => {
     username.modelValue = 'username';
     password.modelValue = 'password';
     const form = element.shadowRoot.querySelector('lion-form');
-    setTimeout(() => form.submit());
+    setTimeout(() => element.triggerSubmit());
     const { detail } = await oneEvent(element, 'input-validation');
     assert.deepEqual(detail, {
       username: 'username',
