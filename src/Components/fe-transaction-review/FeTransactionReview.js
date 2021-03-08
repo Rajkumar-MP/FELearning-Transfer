@@ -49,7 +49,7 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h3>Transaction Details</h3>
+      <h1>${localize.msg('fe-transaction-review:label')}</h1>
       <div>
         ${this.from
           ? html` <p id="from">
