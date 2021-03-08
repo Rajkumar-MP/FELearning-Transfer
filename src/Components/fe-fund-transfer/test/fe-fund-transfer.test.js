@@ -8,10 +8,6 @@ describe('FeFundTransfer', () => {
     element = await fixture(html`<fe-fund-transfer></fe-fund-transfer>`);
   });
 
- 
-
-  
-
   it('renders the proper ids', async () => {
     const fromaccount = element.shadowRoot.querySelector('#fromaccount');
     const toaccount = element.shadowRoot.querySelector('#toaccount');
