@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { localize, LocalizeMixin } from '@lion/localize';
 import '@lion/button';
+import defaultStyles from '../../FeApp.style.js';
 
 export class FeLangToggle extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
@@ -22,10 +23,6 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
     }
   }
 
-  static get properties() {
-    return {};
-  }
-
   toggleLanguage(e, locale) {
     localize.locale = locale;
     const buttons = this.shadowRoot.querySelectorAll('lion-button');
@@ -37,20 +34,13 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
 
   static get styles() {
     return css`
+      ${defaultStyles}
       div {
         display: flex;
         justify-content: flex-end;
       }
 
-      .btn {
-        background-color: #fff;
-        color: #000;
-        border-radius: 5px;
-        padding: 10px;
-        justify-content: right;
-      }
-
-      .btn:hover {
+      .button:hover {
         background-color: #eea2ad;
       }
 
@@ -81,7 +71,7 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
   renderButton({ id, callbackValue, label }) {
     return html`
       <lion-button
-        class="btn"
+        class="button"
         id="${id}"
         @click=${e => this.toggleLanguage(e, callbackValue)}
         >${label}</lion-button
