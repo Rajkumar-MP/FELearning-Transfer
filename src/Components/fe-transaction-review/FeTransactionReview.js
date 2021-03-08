@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { nothing } from 'lit-html';
 import { localize, LocalizeMixin } from '@lion/localize';
+import defaultStyles from '../../FeApp.style.js';
 
 export class FeTransactionReview extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
@@ -24,6 +25,7 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
 
   static get styles() {
     return css`
+      ${defaultStyles}
       :host {
         height: 15vh;
         display: flex;
@@ -49,7 +51,7 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h3>Transaction Details</h3>
+      <h1>${localize.msg('fe-transaction-review:label')}</h1>
       <div>
         ${this.from
           ? html` <p id="from">
