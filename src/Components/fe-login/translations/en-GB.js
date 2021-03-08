@@ -1,4 +1,5 @@
 export default {
+  loginDetails: 'LoginDetails',
   username: 'username',
   password: 'password',
   submit: 'submit',

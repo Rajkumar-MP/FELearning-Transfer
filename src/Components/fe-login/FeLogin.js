@@ -45,7 +45,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h2>Login Details</h2>
+      <h1>${localize.msg('fe-login:loginDetails')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input

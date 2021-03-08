@@ -1,4 +1,5 @@
 export default {
+  loginDetails: 'inloggegevens',
   username: 'gebruikersnaam',
   password: 'wachtwoord',
   submit: 'indienen',
