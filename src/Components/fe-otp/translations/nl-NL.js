@@ -1,5 +1,5 @@
 export default {
-  LoginDetails: 'inloggegevens',
+  OTPValidation: 'OTP-Validatie',
   otp: 'voer eenmalig wachtwoord ',
   otperror: 'voer eenmalig wachtwoord in alstublieft',
   otpcode: 'eenmalig wachtwoord code',
