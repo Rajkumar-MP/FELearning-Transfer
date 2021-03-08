@@ -45,14 +45,14 @@ export class FeOtp extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-      <h1>${localize.msg('fe-otp:OtpCode')}</h1>
+      <h1>${localize.msg('fe-otp:OTPValidation')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input
             name="otp-code"
             id="otp-code" autocomplete="off"
             class="form--input--field"
-              label=${localize.msg('fe-otp:otpcode')}
+              label=${localize.msg('fe-otp:OTPCode')}
               .validators="${[
                 new Required(null, {
                   getMessage: () => localize.msg('fe-otp:otperror'),

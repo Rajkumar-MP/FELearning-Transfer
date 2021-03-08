@@ -1,7 +1,7 @@
 export default {
-  LoginDetails: 'inloggegevens',
+  OTPValidation: 'OTP-Validatie',
   otp: 'voer eenmalig wachtwoord ',
   otperror: 'voer eenmalig wachtwoord in alstublieft',
-  OtpCode: 'eenmalig wachtwoord code',
+  OTPCode: 'eenmalig wachtwoord code',
   validate: 'valideren',
 };

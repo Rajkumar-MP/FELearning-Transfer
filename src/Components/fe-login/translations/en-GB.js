@@ -1,7 +1,7 @@
 export default {
   LoginDetails: 'Login Details',
-  username: 'username',
-  password: 'password',
+  username: 'Username',
+  password: 'Password',
   submit: 'submit',
   usernameerror: 'Please Enter Username',
   default: 'Minimum 8 characters are required',

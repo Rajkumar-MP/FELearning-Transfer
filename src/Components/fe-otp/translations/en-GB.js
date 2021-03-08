@@ -1,7 +1,7 @@
 export default {
-  LoginDetails: 'LoginDetails',
+  OTPValidation: 'OTP Validation',
   otp: 'otp',
   otperror: 'please enter otp',
-  OtpCode: 'Otp Code',
+  OTPCode: 'OTP Code',
   validate: 'validate',
 };
