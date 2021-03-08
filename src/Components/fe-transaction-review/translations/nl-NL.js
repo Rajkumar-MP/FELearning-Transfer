@@ -1,4 +1,5 @@
 export default {
+  label: 'transactie details',
   from: 'Van',
   to: 'Naar',
   amount: 'Bedrag',
