@@ -29,9 +29,7 @@ describe('FeFundTransfer', () => {
     amount.modelValue = 123456;
     remarks.modelValue = 'verygood';
 
-    const form = element.shadowRoot.querySelector('lion-form');
-
-    setTimeout(() => form.submit());
+    setTimeout(() => element.triggerSubmit());
 
     const { detail } = await oneEvent(element, 'fund-validation');
 
