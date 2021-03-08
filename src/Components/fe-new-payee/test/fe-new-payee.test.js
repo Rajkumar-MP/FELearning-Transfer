@@ -19,9 +19,8 @@ describe('FeNewPayee', () => {
     accountholdername.modelValue = 'accountholder';
     accountnumber.modelValue = 123456;
     ifsc.modelValue = 'ifsccode';
-    const form = element.shadowRoot.querySelector('lion-form');
-    setTimeout(() => form.submit());
 
+    setTimeout(() => element.triggerSubmit());
     const { detail } = await oneEvent(element, 'input-validation');
     assert.deepEqual(detail, {
       nickname: 'nickname',
