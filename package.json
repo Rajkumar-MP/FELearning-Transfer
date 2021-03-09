@@ -34,6 +34,7 @@
   "author": "fe-app",
   "license": "MIT",
   "dependencies": {
+    "@lion/ajax": "^0.7.0",
     "@lion/button": "^0.8.11",
     "@lion/fieldset": "^0.16.4",
     "@lion/form": "^0.8.4",
