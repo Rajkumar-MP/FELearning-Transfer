@@ -6,14 +6,14 @@ export default {
   component: 'fe-notification',
 };
 
-function Template({ label, message }) {
+function Template({ type, label }) {
   return html`
-    <fe-notification label=${label} message=${message}> </fe-notification>
+    <fe-notification type=${type} label=${label}> </fe-notification>
   `;
 }
 
 export const Notification = Template.bind({});
 Notification.args = {
-  label: 'info',
-  message: 'Hi, This is the default message',
+  type: 'info',
+  label: 'Hi, This is the default message',
 };
