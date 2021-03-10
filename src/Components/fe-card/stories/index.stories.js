@@ -9,7 +9,7 @@ export default {
 function Template({ title, content }) {
   return html`
     <fe-card .title=${title} .content=${content}> </fe-card>
-    <fe-card .title=${title} .content=${content}> </fe-card>
+   
   `;
 }
 
