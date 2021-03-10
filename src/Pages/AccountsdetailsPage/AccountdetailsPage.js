@@ -6,7 +6,7 @@ export class AccountdetailsPage extends LitElement {
     return css`
       .cards {
         display: flex;
-        margin-top: 100px;
+        margin-top: 10px;
 
         justify-content: center;
       }
@@ -20,6 +20,10 @@ export class AccountdetailsPage extends LitElement {
       legend {
         font-size: 18px;
       }
+
+      .hidden {
+        display: none;
+      }
     `;
   }
 
@@ -32,38 +36,36 @@ export class AccountdetailsPage extends LitElement {
   constructor() {
     super();
     this.data = [];
+    this.isError = false;
   }
 
-  async firstUpdated() {
-    const data = await FeServices.getRequest({
-      url: '/accountinfo/925548553975232',
-    });
+  firstUpdated() {
+    super.firstUpdated();
+    this.getAccountDetaildInformation();
+  }
 
-    console.log('requested data', data);
-    return data;
-    // for(var i=0;i< data.accountDetails.length;i++){
-    // this.accounttype=data.accountDetails[i].type;
-    // this.balance=data.accountDetails[i].balance;
-
-    //    console.log('acctype',data.accountDetails[i].type);
-    //    console.log('acctbal:',data.accountDetails[i].balance);
-
-    // this.accounttype=data.accountDetails[0].type;
-    // this.balance=data.accountDetails[0].balance;
-    // this.accounttype2=data.accountDetails[1].type;
-    // this.balance2=data.accountDetails[1].balance;
-    // console.log('Account details data:',data);
+  async getAccountDetaildInformation() {
+    this.isError = false;
+    try {
+      const data = await FeServices.getRequest({
+        url: '/accountinfo/925548553975232',
+      });
+      this.data = data.accountDetails;
+    } catch (error) {
+      this.isError = true;
+    }
   }
 
   render() {
-    return html`<fe-header></fe-header>
+    return html`
+    <fe-notification type="error" label="Failed to fetched details" class ="${
+      this.isError ? '' : 'hidden'
+    }"></fe-notification>
     <fieldset class="cards"><legend>Account Information:</legend>
+   
     ${this.data.map(
       item =>
-        html`<fe-card
-          title=${item.accountDetails.type}
-          content=${item.accountDetails.balance}
-        ></fe-card>`
+        html`<fe-card title=${item.type} content=${item.balance}></fe-card>`
     )}
 
 </fieldset>
