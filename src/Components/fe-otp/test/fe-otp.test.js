@@ -1,4 +1,4 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
 
 import '../fe-otp.js';
 
@@ -10,11 +10,14 @@ describe('FeOtp', () => {
 
   it('the input validation event should be triggered on clicking submit', async () => {
     const otpcode = element.shadowRoot.querySelector('#otp-code');
-    otpcode.modelValue = 'otp-code';
+    otpcode.modelValue = '123456';
 
     setTimeout(() => element.triggerSubmit());
     const { detail } = await oneEvent(element, 'input-validation');
-    expect(detail, { otpcode: 'otpcode' }).to.exist;
+    assert.deepEqual(detail, {
+      otpcode: '123456',
+    });
+    // expect(detail).to.equal('otp-code');
   });
 
   it('passes the a11y audit', async () => {

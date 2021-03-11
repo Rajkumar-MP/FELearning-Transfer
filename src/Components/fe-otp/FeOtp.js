@@ -48,10 +48,10 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       return;
     }
 
-    this.checkOTP(ev);
     this.dispatchEvent(
       new CustomEvent('input-validation', { detail: serializedValue })
     );
+    this.checkOTP(ev);
   }
 
   async checkOTP(ev) {
@@ -78,7 +78,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       <lion-form @submit=${this.submitForm}>
         <form>
           <lion-input
-            name="otp-code"
+            name="otpcode"
             id="otp-code" autocomplete="off"
             class="form--input--field"
               label=${localize.msg('fe-otp:otpcode')}
