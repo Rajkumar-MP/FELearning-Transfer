@@ -14,7 +14,8 @@ export class LandingPage extends LitElement {
   }
 
   render() {
-    return html` Landing Page `;
+    return html` Landing Page
+      <button @click=${() => this.apitrigger()}></button>`;
   }
 }
 window.customElements.define('landing-page', LandingPage);

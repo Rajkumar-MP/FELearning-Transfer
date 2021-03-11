@@ -4,4 +4,5 @@ export default {
   otperror: 'please enter otp',
   otpcode: 'OTP Code',
   validate: 'validate',
+  lengtherror: 'Length should be 6',
 };

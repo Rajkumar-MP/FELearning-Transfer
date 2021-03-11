@@ -3,8 +3,10 @@ import '@lion/form/lion-form';
 import '@lion/input/lion-input';
 import '@lion/button/lion-button';
 import { localize, LocalizeMixin } from '@lion/localize';
-import { Required } from '@lion/form-core';
+import { Required, MinMaxLength } from '@lion/form-core';
 import defaultStyles from '../../FeApp.style.js';
+
+import { FeServices } from '../../FeServices.js';
 
 export class FeOtp extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
@@ -17,7 +19,16 @@ export class FeOtp extends LocalizeMixin(LitElement) {
   static get styles() {
     return css`
       ${defaultStyles}
+
+      .hidden {
+        display: none;
+      }
     `;
+  }
+
+  constructor() {
+    super();
+    this.isError = false;
   }
 
   triggerSubmit() {
@@ -37,14 +48,32 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       return;
     }
 
-    const loginData = serializedValue;
+    this.checkOTP(ev);
     this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: loginData })
+      new CustomEvent('input-validation', { detail: serializedValue })
     );
+  }
+
+  async checkOTP(ev) {
+    this.isError = false;
+    try {
+      const { serializedValue } = ev.target;
+      await FeServices.postRequest({
+        url: '/otp',
+        data: {
+          code: serializedValue['otp-code'],
+        },
+      });
+    } catch (error) {
+      this.isError = true;
+    }
   }
 
   render() {
     return html`
+    <fe-notification type="error" label="Failed to fetched details" class ="${
+      this.isError ? '' : 'hidden'
+    }"></fe-notification>
       <h1>${localize.msg('fe-otp:OTPValidation')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
@@ -57,6 +86,12 @@ export class FeOtp extends LocalizeMixin(LitElement) {
                 new Required(null, {
                   getMessage: () => localize.msg('fe-otp:otperror'),
                 }),
+                new MinMaxLength(
+                  { min: 6, max: 6 },
+                  {
+                    getMessage: () => localize.msg('fe-otp:lengtherror'),
+                  }
+                ),
               ]}"
             ></lion-input>
             <br />
@@ -66,6 +101,8 @@ export class FeOtp extends LocalizeMixin(LitElement) {
           ></fe-footer>
             <form>
             </lion-form>
+            
+           
             `;
   }
 }
