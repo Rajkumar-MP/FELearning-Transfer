@@ -47,11 +47,10 @@ export class FeOtp extends LocalizeMixin(LitElement) {
 
       return;
     }
-
+    this.checkOTP(ev);
     this.dispatchEvent(
       new CustomEvent('input-validation', { detail: serializedValue })
     );
-    this.checkOTP(ev);
   }
 
   async checkOTP(ev) {
@@ -61,17 +60,18 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       await FeServices.postRequest({
         url: '/otp',
         data: {
-          code: serializedValue['otp-code'],
+          code: serializedValue.otpcode,
         },
       });
     } catch (error) {
       this.isError = true;
+      this.requestUpdate();
     }
   }
 
   render() {
     return html`
-    <fe-notification type="error" label="Failed to fetched details" class ="${
+    <fe-notification type="error" label="Invalid OTP" class ="${
       this.isError ? '' : 'hidden'
     }"></fe-notification>
       <h1>${localize.msg('fe-otp:OTPValidation')}</h1>
