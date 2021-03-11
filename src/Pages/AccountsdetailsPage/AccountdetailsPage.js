@@ -91,7 +91,11 @@ export class AccountdetailsPage extends LocalizeMixin(LitElement) {
 </fieldset>
     <fieldset class="footer"><legend>${localize.msg(
       'account-details-page:transferfunds'
-    )}:</legend><fe-footer secondary="Add New Payee" primary="Transfer Fund" 
+    )}:</legend><fe-footer secondary="${localize.msg(
+      'account-details-page:addnew'
+    )}" primary="${localize.msg(
+      'account-details-page:transferfunds'
+    )}" 
     class="button"><fe-footer></fieldset> `;
   }
 }
