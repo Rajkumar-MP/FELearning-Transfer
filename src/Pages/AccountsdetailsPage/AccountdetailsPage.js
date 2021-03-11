@@ -1,8 +1,18 @@
 import { until } from '@lion/core';
 import { html, css, LitElement } from 'lit-element';
+import { localize, LocalizeMixin } from '@lion/localize';
 import { FeServices } from '../../FeServices.js';
 
-export class AccountdetailsPage extends LitElement {
+export class AccountdetailsPage extends LocalizeMixin(LitElement) {
+  static get localizeNamespaces() {
+    return [
+      {
+        'account-details-page': locale => import(`./translations/${locale}.js`),
+      },
+      ...super.localizeNamespaces,
+    ];
+  }
+
   static get styles() {
     return css`
       .cards {
@@ -42,6 +52,7 @@ export class AccountdetailsPage extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
+
     this.getAccountDetaildInformation();
   }
 
@@ -54,6 +65,7 @@ export class AccountdetailsPage extends LitElement {
 
       this.data = data.accountDetails;
     } catch (error) {
+      this.requestUpdate();
       this.isError = true;
     }
   }
@@ -61,10 +73,12 @@ export class AccountdetailsPage extends LitElement {
   render() {
     return html`
     
-    <fe-notification type="error" label="Failed to fetched details" class ="${
-      this.isError ? '' : 'hidden'
-    }"></fe-notification>
-    <fieldset class="cards"><legend>Account Information:</legend>
+    <fe-notification type="error" label="${localize.msg(
+      'account-details-page:label'
+    )}" class ="${this.isError ? '' : 'hidden'}"></fe-notification>
+    <fieldset class="cards"><legend>${localize.msg(
+      'account-details-page:accountinformation'
+    )}:</legend>
     ${until(
       this.data.map(
         item =>
@@ -75,7 +89,9 @@ export class AccountdetailsPage extends LitElement {
     
     
 </fieldset>
-    <fieldset class="footer"><legend>Transfer Funds:</legend><fe-footer secondary="Add New Payee" primary="Transfer Fund" 
+    <fieldset class="footer"><legend>${localize.msg(
+      'account-details-page:transferfunds'
+    )}:</legend><fe-footer secondary="Add New Payee" primary="Transfer Fund" 
     class="button"><fe-footer></fieldset> `;
   }
 }

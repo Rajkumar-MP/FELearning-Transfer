@@ -26,13 +26,15 @@ describe('AccountdetailsPage', () => {
   it('render the title in header', () => {
     const title = element.shadowRoot.querySelector('legend');
     expect(title).to.exist;
-    expect(title.textContent).to.equal('Account Information:');
+    expect(title.textContent).to.equal(
+      'Account Information:' || 'Account Gegevens:'
+    );
   });
 
   it('render the title in footer', () => {
     const title = element.shadowRoot.querySelector('fieldset.footer');
     expect(title).to.exist;
-    expect(title.textContent).to.equal('Transfer Funds:');
+    expect(title.textContent).to.equal('Transfer Funds:' || 'Geld Overmaken:');
   });
 
   it('passes the a11y audit', async () => {
