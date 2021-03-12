@@ -48,6 +48,7 @@ export class AccountdetailsPage extends LocalizeMixin(LitElement) {
     super();
     this.data = [];
     this.isError = false;
+    this.loginid = '';
   }
 
   firstUpdated() {
@@ -60,13 +61,13 @@ export class AccountdetailsPage extends LocalizeMixin(LitElement) {
     this.isError = false;
     try {
       const data = await FeServices.getRequest({
-        url: '/accountinfo/925548553975232',
+        url: `/accountinfo/${this.loginid}`,
       });
 
       this.data = data.accountDetails;
     } catch (error) {
-      this.requestUpdate();
       this.isError = true;
+      this.requestUpdate();
     }
   }
 

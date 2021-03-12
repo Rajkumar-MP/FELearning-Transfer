@@ -6,7 +6,9 @@ export default {
 };
 
 function Template() {
-  return html` <account-details-page> </account-details-page> `;
+  return html`
+    <account-details-page .loginid=${'925548553975232'}> </account-details-page>
+  `;
 }
 
 export const Accountdetails = Template.bind({});
