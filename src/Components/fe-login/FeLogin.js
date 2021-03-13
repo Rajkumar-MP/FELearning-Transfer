@@ -6,6 +6,8 @@ import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
 import defaultStyles from '../../FeApp.style.js';
 
+import { FeServices } from '../../FeServices.js';
+
 export class FeLogin extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
     return [
@@ -17,7 +19,16 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   static get styles() {
     return css`
       ${defaultStyles}
+
+      .hidden {
+        display: none;
+      }
     `;
+  }
+
+  constructor() {
+    super();
+    this.isError = false;
   }
 
   triggerSubmit() {
@@ -37,10 +48,26 @@ export class FeLogin extends LocalizeMixin(LitElement) {
       return;
     }
 
-    const loginData = serializedValue;
+    this.login(ev);
     this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: loginData })
+      new CustomEvent('input-validation', { detail: serializedValue })
     );
+  }
+
+  async login(ev) {
+    this.isError = false;
+    try {
+      const { serializedValue } = ev.target;
+      await FeServices.postRequest({
+        url: '/login',
+        data: {
+          login: serializedValue.login,
+        },
+      });
+    } catch (error) {
+      this.isError = true;
+      this.requestUpdate();
+    }
   }
 
   render() {
