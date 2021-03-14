@@ -37,7 +37,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
   }
 
   submitForm(ev) {
-    const { hasFeedbackFor, formElements, serializedValue } = ev.target;
+    const { hasFeedbackFor, formElements } = ev.target;
     if (hasFeedbackFor.includes('error')) {
       const firstFormElWithError = formElements.find(el =>
         el.hasFeedbackFor.includes('error')
@@ -48,9 +48,6 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       return;
     }
     this.checkOTP(ev);
-    this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: serializedValue })
-    );
   }
 
   async checkOTP(ev) {
@@ -63,6 +60,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
           code: serializedValue.otpcode,
         },
       });
+      this.requestUpdate();
     } catch (error) {
       this.isError = true;
       this.requestUpdate();
@@ -71,9 +69,9 @@ export class FeOtp extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
-    <fe-notification type="error" label="Invalid OTP" class ="${
-      this.isError ? '' : 'hidden'
-    }"></fe-notification>
+    <fe-notification type="error" label="${localize.msg(
+      'fe-otp:error'
+    )}" class ="${this.isError ? '' : 'hidden'}"></fe-notification>
       <h1>${localize.msg('fe-otp:OTPValidation')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>

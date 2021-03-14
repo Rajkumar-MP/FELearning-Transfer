@@ -1,4 +1,5 @@
 export default {
+  error: 'Ongeldige otp',
   OTPValidation: 'OTP-Validatie',
   otp: 'voer eenmalig wachtwoord ',
   otperror: 'voer eenmalig wachtwoord in alstublieft',

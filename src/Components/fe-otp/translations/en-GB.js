@@ -1,4 +1,5 @@
 export default {
+  error: 'Invalid OTP',
   OTPValidation: 'OTP Validation',
   otp: 'otp',
   otperror: 'please enter otp',
