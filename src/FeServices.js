@@ -6,10 +6,7 @@ const getRequest = ({ url }) => {
   return ajax
     .request(requestURL)
     .then(response => response.json())
-    .then(result => result)
-    .catch(error => {
-      console.log(error);
-    });
+    .then(result => result);
 };
 
 const postRequest = ({ url, data }) => {
@@ -19,10 +16,7 @@ const postRequest = ({ url, data }) => {
       method: 'POST',
       body: data,
     })
-    .then(result => result.body)
-    .catch(error => {
-      console.log(error);
-    });
+    .then(result => result.body);
 };
 export const FeServices = {
   getRequest,
