@@ -1,6 +1,7 @@
-import { html, fixture, expect } from '@open-wc/testing';
-
+import { html, fixture, expect, aTimeout } from '@open-wc/testing';
+import { ajax } from '@lion/ajax';
 import '../AccountdetailsPage.js';
+import sinon from 'sinon';
 
 describe('AccountdetailsPage', () => {
   let element;
@@ -8,19 +9,6 @@ describe('AccountdetailsPage', () => {
     element = await fixture(
       html`<account-details-page></account-details-page>`
     );
-  });
-
-  it('should not show notification when error is not present', () => {
-    const error = element.isError;
-    expect(error).to.exist;
-    expect(error).to.be.equal(false);
-  });
-
-  it('should render the proper notifictaion', () => {
-    const error = element.shadowRoot.querySelector('fe-notification');
-    expect(error).to.exist;
-    expect(error.classList.contains('hidden')).to.be.true;
-    expect(error.hidden).to.be.false;
   });
 
   it('render the title in header', () => {
@@ -35,6 +23,31 @@ describe('AccountdetailsPage', () => {
     const title = element.shadowRoot.querySelector('fieldset.footer');
     expect(title).to.exist;
     expect(title.textContent).to.equal('Transfer Funds:' || 'Geld Overmaken:');
+  });
+
+  it('Check if response is returned', async () => {
+    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const requestMock = sinon.stub(ajax, 'request');
+    requestMock.resolves({ body: 'Success' });
+
+    await aTimeout(150);
+    requestMock.restore();
+
+    expect(notificationtag.classList.contains('hidden')).to.be.true;
+  });
+
+  it('Check for the error from server', async () => {
+    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+
+    const requestMock = sinon.stub(ajax, 'request');
+    requestMock.rejects({ body: 'Fail' });
+
+    element.getAccountDetaildInformation();
+
+    await aTimeout(150);
+    requestMock.restore();
+
+    expect(notificationtag.classList.contains('hidden')).to.be.false;
   });
 
   it('passes the a11y audit', async () => {
