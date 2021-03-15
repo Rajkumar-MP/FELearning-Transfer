@@ -37,7 +37,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
   }
 
   submitForm(ev) {
-    const { hasFeedbackFor, formElements } = ev.target;
+    const { hasFeedbackFor, formElements, serializedValue } = ev.target;
     if (hasFeedbackFor.includes('error')) {
       const firstFormElWithError = formElements.find(el =>
         el.hasFeedbackFor.includes('error')
@@ -48,6 +48,10 @@ export class FeOtp extends LocalizeMixin(LitElement) {
       return;
     }
     this.checkOTP(ev);
+    this.dispatchEvent(
+      new CustomEvent('complete', { detail: serializedValue })
+    );
+    ev.target.reset();
   }
 
   async checkOTP(ev) {

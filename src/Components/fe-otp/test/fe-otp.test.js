@@ -1,4 +1,6 @@
+import { ajax } from '@lion/ajax';
 import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
+import sinon from 'sinon';
 
 import '../fe-otp.js';
 
@@ -8,16 +10,22 @@ describe('FeOtp', () => {
     element = await fixture(html`<fe-otp></fe-otp>`);
   });
 
-  it('the input validation event should be triggered on clicking submit', async () => {
+  it('Check if response is returned', async () => {
     const otpcode = element.shadowRoot.querySelector('#otp-code');
-    otpcode.modelValue = '123456';
+    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const requestMock = sinon.stub(ajax, 'requestJson');
+    requestMock.resolves({ body: 'SuccessResponse' });
 
+    otpcode.modelValue = '123456';
     setTimeout(() => element.triggerSubmit());
-    const { detail } = await oneEvent(element, 'input-validation');
+    const { detail } = await oneEvent(element, 'complete');
     assert.deepEqual(detail, {
       otpcode: '123456',
     });
-    // expect(detail).to.equal('otp-code');
+
+    requestMock.restore();
+    expect(otpcode.modelValue).to.equal('');
+    expect(notificationtag.classList.contains('hidden')).to.be.true;
   });
 
   it('passes the a11y audit', async () => {
