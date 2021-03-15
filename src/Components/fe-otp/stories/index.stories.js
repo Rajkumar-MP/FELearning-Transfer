@@ -7,9 +7,7 @@ export default {
 };
 
 function Template() {
-  return html`
-    <fe-otp @input-validation=${ev => console.log(ev.detail)}> </fe-otp>
-  `;
+  return html` <fe-otp @complete=${ev => console.log(ev.detail)}> </fe-otp> `;
 }
 
 export const Otp = Template.bind({});
