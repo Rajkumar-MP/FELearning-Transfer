@@ -1,5 +1,12 @@
 import { ajax } from '@lion/ajax';
-import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
+import {
+  html,
+  fixture,
+  expect,
+  oneEvent,
+  assert,
+  aTimeout,
+} from '@open-wc/testing';
 import sinon from 'sinon';
 
 import '../fe-otp.js';
@@ -34,9 +41,11 @@ describe('FeOtp', () => {
     const requestMock = sinon.stub(ajax, 'requestJson');
     requestMock.rejects({});
 
+    element.checkOTP();
+    await aTimeout(10);
     requestMock.restore();
-    expect(otpcode.modelValue).to.equal('');
     expect(notificationtag.classList.contains('hidden')).to.be.false;
+    expect(otpcode.modelValue).to.equal('');
   });
 
   it('passes the a11y audit', async () => {
