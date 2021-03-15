@@ -1,4 +1,11 @@
-import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
+import {
+  html,
+  fixture,
+  expect,
+  oneEvent,
+  assert,
+  aTimeout,
+} from '@open-wc/testing';
 import sinon from 'sinon';
 import { ajax } from '@lion/ajax';
 import '../fe-login.js';
@@ -40,17 +47,12 @@ describe('FeLogin', () => {
     username.modelValue = 'username';
     password.modelValue = 'password';
 
-    setTimeout(() => element.triggerSubmit());
-    const { detail } = await oneEvent(element, 'input-validation');
-    assert.deepEqual(detail, {
-      username: 'username',
-      password: 'password',
-    });
-
+    element.login();
+    await aTimeout(10);
     requestMock.restore();
-    expect(username.modelValue).to.equal('');
-    expect(password.modelValue).to.equal('');
-    expect(notification.classList.contains('hidden')).to.be.true;
+    expect(notification.classList.contains('hidden')).to.be.false;
+    expect(username.modelValue).to.equal('username');
+    expect(password.modelValue).to.equal('password');
   });
 
   it('passes the a11y audit', async () => {

@@ -37,7 +37,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   }
 
   submitForm(ev) {
-    const { hasFeedbackFor, formElements, serializedValue } = ev.target;
+    const { hasFeedbackFor, formElements } = ev.target;
     if (hasFeedbackFor.includes('error')) {
       const firstFormElWithError = formElements.find(el =>
         el.hasFeedbackFor.includes('error')
@@ -49,9 +49,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     }
 
     this.login(ev);
-    this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: serializedValue })
-    );
     ev.target.reset();
   }
 
@@ -65,6 +62,9 @@ export class FeLogin extends LocalizeMixin(LitElement) {
           login: serializedValue.login,
         },
       });
+      this.dispatchEvent(
+        new CustomEvent('input-validation', { detail: serializedValue })
+      );
     } catch (error) {
       this.isError = true;
       this.requestUpdate();
