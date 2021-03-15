@@ -52,6 +52,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     this.dispatchEvent(
       new CustomEvent('input-validation', { detail: serializedValue })
     );
+    ev.target.reset();
   }
 
   async login(ev) {
@@ -72,6 +73,11 @@ export class FeLogin extends LocalizeMixin(LitElement) {
 
   render() {
     return html`
+      <fe-notification
+        type="error"
+        label="${localize.msg('fe-otp:error')}"
+        class="${this.isError ? '' : 'hidden'}"
+      ></fe-notification>
       <h1>${localize.msg('fe-login:loginDetails')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
