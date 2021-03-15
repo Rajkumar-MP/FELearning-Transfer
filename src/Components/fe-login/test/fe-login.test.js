@@ -9,7 +9,7 @@ describe('FeLogin', () => {
     element = await fixture(html`<fe-login></fe-login>`);
   });
 
-  it('checks whether the response is returned', async () => {
+  it('the input validation event should be triggered on clicking submit', async () => {
     const username = element.shadowRoot.querySelector('#username');
     const password = element.shadowRoot.querySelector('#password');
     const notification = element.shadowRoot.querySelector('fe-notification');
