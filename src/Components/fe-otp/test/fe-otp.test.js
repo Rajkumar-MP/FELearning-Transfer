@@ -28,6 +28,24 @@ describe('FeOtp', () => {
     expect(notificationtag.classList.contains('hidden')).to.be.true;
   });
 
+  it('Check for the error from server', async () => {
+    const otpcode = element.shadowRoot.querySelector('#otp-code');
+    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const requestMock = sinon.stub(ajax, 'requestJson');
+    requestMock.rejects({});
+
+    otpcode.modelValue = '123456';
+    setTimeout(() => element.triggerSubmit());
+    const { detail } = await oneEvent(element, 'complete');
+    assert.deepEqual(detail, {
+      otpcode: '123456',
+    });
+
+    requestMock.restore();
+    expect(otpcode.modelValue).to.equal('');
+    expect(notificationtag.classList.contains('hidden')).to.be.true;
+  });
+
   it('passes the a11y audit', async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
