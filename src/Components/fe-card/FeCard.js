@@ -21,15 +21,18 @@ export class FeCard extends LitElement {
       ${defaultStyles}
       :host {
         display: inline-block;
-        padding: 8px;
       }
 
       div {
-        width: 220px;
+        margin: 10px;
+        min-width: 200px;
+
         text-align: center;
         background-color: rgb(255, 255, 255);
-        border: 2px solid #e13d2c;
+        border: 1px solid black;
         border-radius: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       div:hover {
