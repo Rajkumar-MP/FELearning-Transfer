@@ -7,7 +7,9 @@ export default {
 };
 
 function Template() {
-  return html` <fe-otp @complete=${ev => console.log(ev.detail)}> </fe-otp> `;
+  return html`
+    <fe-otp @complete=${() => console.log('Event completed')}> </fe-otp>
+  `;
 }
 
 export const Otp = Template.bind({});

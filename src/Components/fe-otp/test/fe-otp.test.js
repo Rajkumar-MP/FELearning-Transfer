@@ -1,12 +1,5 @@
 import { ajax } from '@lion/ajax';
-import {
-  html,
-  fixture,
-  expect,
-  oneEvent,
-  assert,
-  aTimeout,
-} from '@open-wc/testing';
+import { html, fixture, expect, oneEvent, aTimeout } from '@open-wc/testing';
 import sinon from 'sinon';
 
 import '../fe-otp.js';
@@ -25,10 +18,8 @@ describe('FeOtp', () => {
 
     otpcode.modelValue = '123456';
     setTimeout(() => element.triggerSubmit());
-    const { detail } = await oneEvent(element, 'complete');
-    assert.deepEqual(detail, {
-      otpcode: '123456',
-    });
+    const { type } = await oneEvent(element, 'complete');
+    expect(type).to.be.equal('complete');
 
     requestMock.restore();
     expect(otpcode.modelValue).to.equal('');

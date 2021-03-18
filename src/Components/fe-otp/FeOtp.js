@@ -62,9 +62,7 @@ export class FeOtp extends LocalizeMixin(LitElement) {
           code: serializedValue.otpcode,
         },
       });
-      this.dispatchEvent(
-        new CustomEvent('complete', { detail: serializedValue })
-      );
+      this.dispatchEvent(new CustomEvent('complete', { bubbles: true }));
     } catch (error) {
       this.isError = true;
       this.requestUpdate();
