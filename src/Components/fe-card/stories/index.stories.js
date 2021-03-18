@@ -7,10 +7,7 @@ export default {
 };
 
 function Template({ title, content }) {
-  return html`
-    <fe-card .title=${title} .content=${content}> </fe-card>
-    <fe-card .title=${title} .content=${content}> </fe-card>
-  `;
+  return html` <fe-card .title=${title} .content=${content}> </fe-card> `;
 }
 
 export const Card = Template.bind({});
