@@ -40,7 +40,7 @@ export class AccountdetailsPage extends LocalizeMixin(LitElement) {
 
   static get properties() {
     return {
-      data: { type: Object },
+      data: { type: Array },
     };
   }
 
