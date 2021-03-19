@@ -1,12 +1,13 @@
 import { html } from 'lit-html';
-import './LoginPage.js';
+import '../LoginPage.js';
 
 export default {
   title: 'Page',
+  component: 'login-page',
 };
 
 function Template() {
   return html` <login-page> </login-page> `;
 }
 
-export const Landing = Template.bind({});
+export const LoginPage = Template.bind({});

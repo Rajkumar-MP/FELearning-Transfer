@@ -6,8 +6,6 @@ import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
 import defaultStyles from '../../FeApp.style.js';
 
-import { FeServices } from '../../FeServices.js';
-
 export class FeLogin extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
     return [
@@ -19,10 +17,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   static get styles() {
     return css`
       ${defaultStyles}
-
-      .hidden {
-        display: none;
-      }
     `;
   }
 
@@ -37,7 +31,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
   }
 
   submitForm(ev) {
-    const { hasFeedbackFor, formElements } = ev.target;
+    const { hasFeedbackFor, formElements, serializedValue } = ev.target;
     if (hasFeedbackFor.includes('error')) {
       const firstFormElWithError = formElements.find(el =>
         el.hasFeedbackFor.includes('error')
@@ -47,37 +41,34 @@ export class FeLogin extends LocalizeMixin(LitElement) {
 
       return;
     }
+    this.dispatchEvent(
+      new CustomEvent('login-details', { detail: serializedValue })
+    );
 
-    this.login(ev);
     ev.target.reset();
   }
 
-  async login(ev) {
-    this.isError = false;
-    try {
-      const { serializedValue } = ev.target;
-      await FeServices.postRequest({
-        url: '/login',
-        data: {
-          login: serializedValue.login,
-        },
-      });
-      this.dispatchEvent(
-        new CustomEvent('input-validation', { detail: serializedValue })
-      );
-    } catch (error) {
-      this.isError = true;
-      this.requestUpdate();
-    }
-  }
+  // async login(ev) {
+  //   this.isError = false;
+  //   try {
+  //     const { serializedValue } = ev.target;
+  //     await FeServices.postRequest({
+  //       url: '/login',
+  //       data: {
+  //         login: serializedValue.login,
+  //       },
+  //     });
+  //     this.dispatchEvent(
+  //       new CustomEvent('input-validation', { detail: serializedValue })
+  //     );
+  //   } catch (error) {
+  //     this.isError = true;
+  //     this.requestUpdate();
+  //   }
+  // }
 
   render() {
     return html`
-      <fe-notification
-        type="error"
-        label="${localize.msg('fe-otp:error')}"
-        class="${this.isError ? '' : 'hidden'}"
-      ></fe-notification>
       <h1>${localize.msg('fe-login:loginDetails')}</h1>
       <lion-form @submit=${this.submitForm}>
         <form>
@@ -91,7 +82,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:usernameerror'),
               }),
-              new MinLength(8, {
+              new MinLength(5, {
                 getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
@@ -108,7 +99,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:passworderror'),
               }),
-              new MinLength(8, {
+              new MinLength(5, {
                 getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"

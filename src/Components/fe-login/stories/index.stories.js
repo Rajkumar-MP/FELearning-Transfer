@@ -7,9 +7,7 @@ export default {
 };
 
 function Template() {
-  return html`
-    <fe-login @input-validation=${ev => console.log(ev.detail)}> </fe-login>
-  `;
+  return html` <fe-login> </fe-login> `;
 }
 
 export const Login = Template.bind({});

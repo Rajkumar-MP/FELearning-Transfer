@@ -1,20 +1,51 @@
 import { html, css, LitElement } from 'lit-element';
+import defaultStyles from '../../FeApp.style.js';
+import { FeServices } from '../../FeServices.js';
 
 export class LoginPage extends LitElement {
   static get styles() {
     return css`
-      :host {
-        margin: 0;
+      ${defaultStyles}
+
+      .hidden {
+        display: none;
       }
     `;
   }
 
-  static get properties() {
-    return {};
+  constructor() {
+    super();
+    this.isError = false;
+  }
+
+  async login(detail) {
+    this.isError = false;
+    try {
+      const data = await FeServices.postRequest({
+        url: '/login',
+        data: {
+          username: detail.username,
+          password: detail.password,
+        },
+      });
+
+      console.log('ID', data);
+    } catch (error) {
+      this.isError = true;
+      this.requestUpdate();
+      console.log(error);
+    }
   }
 
   render() {
-    return html` <fe-login></fe-login> `;
+    return html`
+      <fe-notification
+        type="error"
+        label="Invalid Login details"
+        class="${this.isError ? '' : 'hidden'}"
+      ></fe-notification>
+      <fe-login @login-details=${ev => this.login(ev.detail)}></fe-login>
+    `;
   }
 }
 window.customElements.define('login-page', LoginPage);
