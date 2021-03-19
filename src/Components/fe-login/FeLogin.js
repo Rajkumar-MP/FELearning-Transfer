@@ -37,9 +37,8 @@ export class FeLogin extends LocalizeMixin(LitElement) {
       return;
     }
 
-    const loginData = serializedValue;
     this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: loginData })
+      new CustomEvent('input-validation', { detail: serializedValue })
     );
   }
 
