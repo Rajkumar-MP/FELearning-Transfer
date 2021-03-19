@@ -29,11 +29,10 @@ export class LoginPage extends LitElement {
         },
       });
 
-      console.log('ID', data);
+      this.dispatchEvent(new CustomEvent('id', { detail: data.id }));
     } catch (error) {
       this.isError = true;
       this.requestUpdate();
-      console.log(error);
     }
   }
 
@@ -49,3 +48,4 @@ export class LoginPage extends LitElement {
   }
 }
 window.customElements.define('login-page', LoginPage);
+// this.login(ev.detail)
