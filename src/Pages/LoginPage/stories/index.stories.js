@@ -7,7 +7,9 @@ export default {
 };
 
 function Template() {
-  return html` <login-page> </login-page> `;
+  return html`
+    <login-page @customer-id=${ev => console.log(ev.detail)}> </login-page>
+  `;
 }
 
 export const LoginPage = Template.bind({});

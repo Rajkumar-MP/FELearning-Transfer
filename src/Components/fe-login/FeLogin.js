@@ -48,25 +48,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     ev.target.reset();
   }
 
-  // async login(ev) {
-  //   this.isError = false;
-  //   try {
-  //     const { serializedValue } = ev.target;
-  //     await FeServices.postRequest({
-  //       url: '/login',
-  //       data: {
-  //         login: serializedValue.login,
-  //       },
-  //     });
-  //     this.dispatchEvent(
-  //       new CustomEvent('input-validation', { detail: serializedValue })
-  //     );
-  //   } catch (error) {
-  //     this.isError = true;
-  //     this.requestUpdate();
-  //   }
-  // }
-
   render() {
     return html`
       <h1>${localize.msg('fe-login:loginDetails')}</h1>
