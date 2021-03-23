@@ -4,4 +4,6 @@ export default {
   to: 'Naar',
   amount: 'Bedrag',
   remarks: 'Opmerkingen',
+  edit: 'Bewerk',
+  proceed: 'Doorgaan',
 };

@@ -4,4 +4,6 @@ export default {
   to: 'To',
   amount: 'Amount',
   remarks: 'Remarks',
+  edit: 'Edit',
+  proceed: 'Proceed',
 };
