@@ -21,11 +21,6 @@ export class FeLogin extends LocalizeMixin(LitElement) {
     `;
   }
 
-  constructor() {
-    super();
-    this.isError = false;
-  }
-
   triggerSubmit() {
     const form = this.shadowRoot.querySelector('lion-form');
     form.submit();
