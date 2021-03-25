@@ -32,6 +32,7 @@ export class TransactionPage extends LitElement {
         <lion-step>
           <fe-transaction-review
             @review-complete=${ev => ev.target.parentElement.controller.next()}
+            @previous=${ev => ev.target.parentElement.controller.previous()}
           ></fe-transaction-review>
         </lion-step>
 

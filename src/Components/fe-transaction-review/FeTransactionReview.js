@@ -27,6 +27,10 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
     this.dispatchEvent(new CustomEvent('review-complete', { bubbles: true }));
   }
 
+  triggerPrevious() {
+    this.dispatchEvent(new CustomEvent('previous', { bubbles: true }));
+  }
+
   static get styles() {
     return css`
       ${defaultStyles}
@@ -82,6 +86,7 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
           primary=${localize.msg('fe-transaction-review:proceed')}
           secondary=${localize.msg('fe-transaction-review:edit')}
           @primary-btn-click=${() => this.triggerProceed()}
+          @secondary-btn-click=${() => this.triggerPrevious()}
         >
         </fe-footer>
       </div>
