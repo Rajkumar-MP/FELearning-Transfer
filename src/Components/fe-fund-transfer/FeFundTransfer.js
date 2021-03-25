@@ -57,6 +57,92 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
     );
   }
 
+  // render() {
+  //   return html`
+  //     <h1>${localize.msg('fe-fund-transfer:fundtransfer')}</h1>
+  //     <lion-form @submit=${this.submitForm}>
+  //       <form>
+  //         <lion-select
+  //           name="fromaccount"
+  //           label="${localize.msg('fe-fund-transfer:fromaccount')}"
+  //           class="form--input--field select"
+  //           id="fromaccount"
+  //           .validators="${[
+  //             new Required(null, {
+  //               getMessage: () =>
+  //                 localize.msg('fe-fund-transfer:accounttypeerror'),
+  //             }),
+  //           ]}"
+  //         >
+  //           <select slot="input">
+  //             <option selected hidden value>Please select</option>
+  //             ${this.accountDetails.map(
+  //               account =>
+  //                 html`<option value=${account.number}>${account.type}</option>`
+  //             )}
+  //           </select>
+  //         </lion-select>
+
+  //         <lion-select
+  //           name="toaccount"
+  //           label="${localize.msg('fe-fund-transfer:toaccount')}"
+  //           class="form--input--field select"
+  //           id="toaccount"
+  //           .validators="${[
+  //             new Required(null, {
+  //               getMessage: () =>
+  //                 localize.msg('fe-fund-transfer:accounttypeerror'),
+  //             }),
+  //           ]}"
+  //         >
+  //           <select slot="input">
+  //             <option selected hidden value>Please select</option>
+  //             ${this.payeeList.map(
+  //               payee =>
+  //                 html`<option value=${payee.accountNo}>
+  //                   ${payee.nickName}
+  //                 </option>`
+  //             )}
+  //           </select>
+  //         </lion-select>
+
+  //         <lion-input
+  //           name="amount"
+  //           id="amount"
+  //           label="${localize.msg('fe-fund-transfer:amount')}"
+  //           class="form--input--field select"
+  //           .validators="${[
+  //             new Required(null, {
+  //               getMessage: () => localize.msg('fe-fund-transfer:amounterror'),
+  //             }),
+  //           ]}"
+  //         ></lion-input>
+
+  //         <lion-input
+  //           name="remarks"
+  //           id="remarks"
+  //           label="${localize.msg('fe-fund-transfer:remarks')}"
+  //           class="form--input--field input"
+  //           .validators="${[
+  //             new Required(null, {
+  //               getMessage: () => localize.msg('fe-fund-transfer:amounterror'),
+  //             }),
+  //             new MinLength(8, {
+  //               getMessage: () => localize.msg('fe-fund-transfer:remarkserror'),
+  //             }),
+  //           ]}"
+  //         ></lion-input>
+  //         <fe-footer
+  //           primary=${localize.msg('fe-fund-transfer:continue')}
+  //           secondary=${localize.msg('fe-fund-transfer:cancel')}
+  //           @primary-btn-click=${() => this.triggerSubmit()}
+  //         >
+  //         </fe-footer>
+  //       </form>
+  //     </lion-form>
+  //   `;
+  // }
+
   render() {
     return html`
       <h1>${localize.msg('fe-fund-transfer:fundtransfer')}</h1>
@@ -76,10 +162,8 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           >
             <select slot="input">
               <option selected hidden value>Please select</option>
-              ${this.accountDetails.map(
-                account =>
-                  html`<option value=${account.number}>${account.type}</option>`
-              )}
+              <option value="icici">icici</option>
+              <option value="bob">bob</option>
             </select>
           </lion-select>
 
@@ -97,12 +181,8 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
           >
             <select slot="input">
               <option selected hidden value>Please select</option>
-              ${this.payeeList.map(
-                payee =>
-                  html`<option value=${payee.accountNo}>
-                    ${payee.nickName}
-                  </option>`
-              )}
+              <option value="icici">icici</option>
+              <option value="bob">bob</option>
             </select>
           </lion-select>
 
