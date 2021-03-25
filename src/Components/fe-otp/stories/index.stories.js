@@ -8,7 +8,7 @@ export default {
 
 function Template() {
   return html`
-    <fe-otp @input-validation=${ev => console.log(ev.detail)}> </fe-otp>
+    <fe-otp @complete=${() => console.log('Event completed')}> </fe-otp>
   `;
 }
 
