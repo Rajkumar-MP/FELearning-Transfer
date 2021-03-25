@@ -40,10 +40,8 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
         text-align: center;
       }
       div {
-        width: 30%;
+        width: 100%;
         text-align: left;
-        background-color: rgb(255, 255, 255);
-        border: 2px solid #e13d2c;
         border-radius: 5px;
       }
     `;
@@ -75,6 +73,13 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
                 .remarks}
             </p>`
           : nothing}
+
+        <fe-footer
+          primary=${localize.msg('fe-transaction-review:proceed')}
+          secondary=${localize.msg('fe-transaction-review:edit')}
+          }
+        >
+        </fe-footer>
       </div>
     `;
   }

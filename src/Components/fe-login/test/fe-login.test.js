@@ -16,7 +16,7 @@ describe('FeLogin', () => {
     password.modelValue = 'password';
 
     setTimeout(() => element.triggerSubmit());
-    const { detail } = await oneEvent(element, 'input-validation');
+    const { detail } = await oneEvent(element, 'login-details');
     assert.deepEqual(detail, {
       username: 'username',
       password: 'password',

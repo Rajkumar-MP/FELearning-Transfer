@@ -8,7 +8,7 @@ export default {
 
 function Template() {
   return html`
-    <fe-login @input-validation=${ev => console.log(ev.detail)}> </fe-login>
+    <fe-login @login-details=${ev => console.log(ev.detail)}> </fe-login>
   `;
 }
 

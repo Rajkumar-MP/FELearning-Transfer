@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import '@lion/form/lion-form';
 import '@lion/input/lion-input';
 import '@lion/button/lion-button';
+import '../fe-footer/fe-footer.js';
 import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
 import defaultStyles from '../../FeApp.style.js';
@@ -36,10 +37,11 @@ export class FeLogin extends LocalizeMixin(LitElement) {
 
       return;
     }
-
     this.dispatchEvent(
-      new CustomEvent('input-validation', { detail: serializedValue })
+      new CustomEvent('login-details', { detail: serializedValue })
     );
+
+    ev.target.reset();
   }
 
   render() {
@@ -57,7 +59,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:usernameerror'),
               }),
-              new MinLength(8, {
+              new MinLength(5, {
                 getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
@@ -74,7 +76,7 @@ export class FeLogin extends LocalizeMixin(LitElement) {
               new Required(null, {
                 getMessage: () => localize.msg('fe-login:passworderror'),
               }),
-              new MinLength(8, {
+              new MinLength(5, {
                 getMessage: () => localize.msg('fe-login:default'),
               }),
             ]}"
