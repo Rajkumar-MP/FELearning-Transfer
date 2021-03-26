@@ -1,12 +1,38 @@
 import { html, css, LitElement } from 'lit-element';
 import defaultStyles from '../../FeApp.style.js';
 import '@lion/steps/define';
+import { FeServices } from '../../FeServices.js';
 
 export class TransactionPage extends LitElement {
   static get styles() {
     return css`
       ${defaultStyles}
     `;
+  }
+
+  constructor() {
+    super();
+    this.loginid = '';
+  }
+
+  firstUpdated() {
+    super.firstUpdated();
+    this.getAccountDetails();
+  }
+
+  async getAccountDetails() {
+    try {
+      const data = await FeServices.getRequest({
+        url: `/accountinfo/${this.loginid}`,
+      });
+      const accountInformation = this.shadowRoot.querySelector(
+        'fe-fund-transfer'
+      );
+      accountInformation.accountDetails = data.accountDetails;
+      accountInformation.payeeList = data.payeeList;
+    } catch (error) {
+      this.requestUpdate();
+    }
   }
 
   fetchDetails(ev, detail) {

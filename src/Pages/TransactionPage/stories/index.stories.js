@@ -7,7 +7,9 @@ export default {
 };
 
 function Template() {
-  return html` <transaction-page></transaction-page> `;
+  return html`
+    <transaction-page .loginid=${'925548553975232'}></transaction-page>
+  `;
 }
 
 export const TransactionPage = Template.bind({});
