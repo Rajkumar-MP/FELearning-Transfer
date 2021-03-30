@@ -1,10 +1,22 @@
-import { LitElement, html, css } from 'lit-element';
+import {
+  ScopedElementsMixin,
+  LitElement,
+  html,
+  css,
+  nothing,
+} from '@lion/core';
 
-import '@lion/button/lion-button';
-import { nothing } from 'lit-html';
+import { LionButton } from '@lion/button';
+
 import defaultStyles from '../../FeApp.style.js';
 
-export class FeFooter extends LitElement {
+export class FeFooter extends ScopedElementsMixin(LitElement) {
+  static get scopedElements() {
+    return {
+      'lion-button': LionButton,
+    };
+  }
+
   static get properties() {
     return {
       primary: { type: String },

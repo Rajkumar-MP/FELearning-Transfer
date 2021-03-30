@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeFooter } from './FeFooter.js';
 
-customElements.define('fe-footer', FeFooter);
+defineElement('fe-footer', FeFooter);

@@ -1,6 +1,9 @@
 import { html, fixture, expect, aTimeout, oneEvent } from '@open-wc/testing';
+import { defineElement, getScopedTagName } from '../../../utils.js';
 
-import '../fe-footer.js';
+import { FeFooter } from '../FeFooter.js';
+
+defineElement('fe-footer', FeFooter);
 
 describe('FeFooter', () => {
   let element;
@@ -12,12 +15,15 @@ describe('FeFooter', () => {
     element.primary = 'Next';
     element.secondary = 'Back';
     await aTimeout(10);
-    const buttonCount = element.shadowRoot.querySelectorAll('lion-button')
-      .length;
+    const buttonCount = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    ).length;
     const [
       primaryBtnElement,
       secondaryBtnElement,
-    ] = element.shadowRoot.querySelectorAll('lion-button');
+    ] = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    );
     expect(buttonCount).to.be.equal(2);
     expect(primaryBtnElement.textContent).to.be.equal('Next');
     expect(secondaryBtnElement.textContent).to.be.equal('Back');
@@ -27,10 +33,11 @@ describe('FeFooter', () => {
     element.primary = 'Next';
 
     await aTimeout(10);
-    const buttonCount = element.shadowRoot.querySelectorAll('lion-button')
-      .length;
+    const buttonCount = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    ).length;
     const [primaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
+      getScopedTagName(element, 'lion-button')
     );
     expect(buttonCount).to.be.equal(1);
     expect(primaryBtnElement.textContent).to.be.equal('Next');
@@ -40,10 +47,11 @@ describe('FeFooter', () => {
     element.primary = 'Back';
 
     await aTimeout(10);
-    const buttonCount = element.shadowRoot.querySelectorAll('lion-button')
-      .length;
+    const buttonCount = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    ).length;
     const [secondaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
+      getScopedTagName(element, 'lion-button')
     );
     expect(buttonCount).to.be.equal(1);
     expect(secondaryBtnElement.textContent).to.be.equal('Back');
@@ -51,9 +59,12 @@ describe('FeFooter', () => {
 
   it('nothing to display when no params are passed in the component', async () => {
     await aTimeout(10);
-    const buttonCount = element.shadowRoot.querySelectorAll('lion-button')
-      .length;
-    const [noBtnElement] = element.shadowRoot.querySelectorAll('lion-button');
+    const buttonCount = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    ).length;
+    const [noBtnElement] = element.shadowRoot.querySelectorAll(
+      getScopedTagName(element, 'lion-button')
+    );
     expect(buttonCount).to.be.equal(0);
     expect(noBtnElement).to.be.equal(undefined);
   });
@@ -63,7 +74,7 @@ describe('FeFooter', () => {
     element.secondary = 'Back';
     await aTimeout(10);
     const [primaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
+      getScopedTagName(element, 'lion-button')
     );
     setTimeout(() => primaryBtnElement.click());
     const { type } = await oneEvent(element, 'primary-btn-click');
@@ -75,7 +86,7 @@ describe('FeFooter', () => {
     element.secondary = 'Back';
     await aTimeout(10);
     const [, secondaryBtnElement] = element.shadowRoot.querySelectorAll(
-      'lion-button'
+      getScopedTagName(element, 'lion-button')
     );
     setTimeout(() => secondaryBtnElement.click());
     const { type } = await oneEvent(element, 'secondary-btn-click');
