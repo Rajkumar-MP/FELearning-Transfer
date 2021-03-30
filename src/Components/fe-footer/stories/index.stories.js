@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-footer.js';
+import { defineElement } from '../../../utils.js';
+import { FeFooter } from '../FeFooter.js';
+
+defineElement('fe-footer', FeFooter);
 
 export default {
   title: 'Component',

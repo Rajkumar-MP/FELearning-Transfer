@@ -14,7 +14,19 @@ export class LandingPage extends LitElement {
   }
 
   render() {
-    return html` Landing Page `;
+    return html` Landing Page
+      <button @click=${() => this.navigation()}>Login</button>`;
+  }
+
+  navigation() {
+    this.dispatchEvent(
+      new CustomEvent('navigate-to', {
+        detail: { path: '/login' },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }
+
 window.customElements.define('landing-page', LandingPage);
