@@ -21,6 +21,7 @@ export class LoginPage extends LitElement {
   }
 
   async login(detail) {
+    console.log(this.location);
     this.isError = false;
     try {
       const data = await FeServices.postRequest({
@@ -31,7 +32,9 @@ export class LoginPage extends LitElement {
         },
       });
 
-      this.dispatchEvent(new CustomEvent('customer-id', { detail: data.id }));
+      this.dispatchEvent(
+        new CustomEvent('customer-id', { detail: data.id, bubbles: true })
+      );
     } catch (error) {
       this.isError = true;
       this.requestUpdate();
