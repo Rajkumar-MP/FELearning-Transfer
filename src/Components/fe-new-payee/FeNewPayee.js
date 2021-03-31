@@ -4,7 +4,6 @@ import { Required } from '@lion/form-core';
 import { LionButton } from '@lion/button';
 import { LionForm } from '@lion/form';
 import { LionInput } from '@lion/input';
-import { FeFooter } from '../fe-footer/FeFooter.js';
 import defaultStyles from '../../FeApp.style.js';
 
 export class FeNewPayee extends ScopedElementsMixin(LocalizeMixin(LitElement)) {
@@ -13,7 +12,7 @@ export class FeNewPayee extends ScopedElementsMixin(LocalizeMixin(LitElement)) {
       'lion-button': LionButton,
       'lion-form': LionForm,
       'lion-input': LionInput,
-      'fe-footer': FeFooter,
+      
     };
   }
 
