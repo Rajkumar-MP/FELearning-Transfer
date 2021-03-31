@@ -12,7 +12,6 @@ export class FeNewPayee extends ScopedElementsMixin(LocalizeMixin(LitElement)) {
       'lion-button': LionButton,
       'lion-form': LionForm,
       'lion-input': LionInput,
-      
     };
   }
 
