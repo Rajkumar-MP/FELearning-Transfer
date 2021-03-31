@@ -1,6 +1,9 @@
 import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
 
-import '../fe-new-payee.js';
+import { defineElement } from '../../../utils.js';
+import { FeNewPayee } from '../FeNewPayee.js';
+
+defineElement('fe-new-payee', FeNewPayee);
 
 describe('FeNewPayee', () => {
   let element;

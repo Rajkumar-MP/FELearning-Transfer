@@ -1,8 +1,8 @@
-import { LitElement, html, css } from 'lit-element';
+import { ScopedElementsMixin, LitElement, html, css } from '@lion/core';
 
 import defaultStyles from '../../FeApp.style.js';
 
-export class FeCard extends LitElement {
+export class FeCard extends ScopedElementsMixin(LitElement) {
   static get properties() {
     return {
       title: { type: String },

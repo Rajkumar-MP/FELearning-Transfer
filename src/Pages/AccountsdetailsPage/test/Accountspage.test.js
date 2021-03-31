@@ -1,7 +1,10 @@
 import { html, fixture, expect, aTimeout } from '@open-wc/testing';
 import { ajax } from '@lion/ajax';
-import '../AccountdetailsPage.js';
 import sinon from 'sinon';
+import { defineElement, getScopedTagName } from '../../../utils.js';
+import { AccountdetailsPage } from '../AccountdetailsPage.js';
+
+defineElement('account-details-page', AccountdetailsPage);
 
 describe('AccountdetailsPage', () => {
   let element;
@@ -20,13 +23,15 @@ describe('AccountdetailsPage', () => {
   });
 
   it('render the title in footer', () => {
-    const title = element.shadowRoot.querySelector('fieldset.footer');
+    const title = element.shadowRoot.querySelector('#footer');
     expect(title).to.exist;
     expect(title.textContent).to.equal('Transfer Funds:' || 'Geld Overmaken:');
   });
 
   it('Check if response is returned', async () => {
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
     const requestMock = sinon.stub(ajax, 'request');
     requestMock.resolves({ body: 'Success' });
 
@@ -37,7 +42,9 @@ describe('AccountdetailsPage', () => {
   });
 
   it('Check for the error from server', async () => {
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
 
     const requestMock = sinon.stub(ajax, 'request');
     requestMock.rejects({ body: 'Fail' });

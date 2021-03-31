@@ -1,14 +1,26 @@
-import { LitElement, css, html } from 'lit-element';
-import '@lion/form/lion-form';
-import '@lion/input/lion-input';
-import '@lion/button/lion-button';
-import '@lion/select/lion-select';
-import '../fe-footer/fe-footer.js';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
+import { LionButton } from '@lion/button';
+import { LionForm } from '@lion/form';
+import { LionInput } from '@lion/input';
+import { LionSelect } from '@lion/select';
 import { localize, LocalizeMixin } from '@lion/localize';
 import { Required, MinLength } from '@lion/form-core';
+import { FeFooter } from '../fe-footer/FeFooter.js';
 import defaultStyles from '../../FeApp.style.js';
 
-export class FeFundTransfer extends LocalizeMixin(LitElement) {
+export class FeFundTransfer extends ScopedElementsMixin(
+  LocalizeMixin(LitElement)
+) {
+  static get scopedElements() {
+    return {
+      'lion-button': LionButton,
+      'lion-form': LionForm,
+      'lion-input': LionInput,
+      'lion-select': LionSelect,
+      'fe-footer': FeFooter,
+    };
+  }
+
   static get localizeNamespaces() {
     return [
       { 'fe-fund-transfer': locale => import(`./translations/${locale}.js`) },
@@ -36,7 +48,9 @@ export class FeFundTransfer extends LocalizeMixin(LitElement) {
   }
 
   triggerSubmit() {
-    const form = this.shadowRoot.querySelector('lion-form');
+    const form = this.shadowRoot.querySelector(
+      this.getScopedTagName('lion-form', this.scopedElements)
+    );
     form.submit();
   }
 

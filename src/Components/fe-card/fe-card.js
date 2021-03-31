@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeCard } from './FeCard.js';
 
-customElements.define('fe-card', FeCard);
+defineElement('fe-card', FeCard);

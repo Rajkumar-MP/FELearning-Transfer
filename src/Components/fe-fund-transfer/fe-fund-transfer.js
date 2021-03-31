@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeFundTransfer } from './FeFundTransfer.js';
 
-customElements.define('fe-fund-transfer', FeFundTransfer);
+defineElement('fe-fund-transfer', FeFundTransfer);

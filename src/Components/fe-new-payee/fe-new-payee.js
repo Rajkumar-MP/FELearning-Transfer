@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeNewPayee } from './FeNewPayee.js';
 
-customElements.define('fe-new-payee', FeNewPayee);
+defineElement('fe-new-payee', FeNewPayee);

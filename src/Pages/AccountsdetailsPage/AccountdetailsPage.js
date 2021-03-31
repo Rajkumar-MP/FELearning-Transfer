@@ -1,9 +1,22 @@
-import { until } from '@lion/core';
-import { html, css, LitElement } from 'lit-element';
-import { localize, LocalizeMixin } from '@lion/localize';
-import { FeServices } from '../../FeServices.js';
+import { until, ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 
-export class AccountdetailsPage extends LocalizeMixin(LitElement) {
+import { localize, LocalizeMixin } from '@lion/localize';
+import { FeFooter } from '../../Components/fe-footer/FeFooter.js';
+import { FeServices } from '../../FeServices.js';
+import { FeCard } from '../../Components/fe-card/FeCard.js';
+import { FeNotification } from '../../Components/fe-notification/FeNotification.js';
+
+export class AccountdetailsPage extends ScopedElementsMixin(
+  LocalizeMixin(LitElement)
+) {
+  static get scopedElements() {
+    return {
+      'fe-footer': FeFooter,
+      'fe-card': FeCard,
+      'fe-notification': FeNotification,
+    };
+  }
+
   static get localizeNamespaces() {
     return [
       {
@@ -90,7 +103,7 @@ export class AccountdetailsPage extends LocalizeMixin(LitElement) {
     
     
 </fieldset>
-    <fieldset class="footer"><legend>${localize.msg(
+    <fieldset id="footer"><legend>${localize.msg(
       'account-details-page:transferfunds'
     )}:</legend><fe-footer secondary="${localize.msg(
       'account-details-page:addnew'

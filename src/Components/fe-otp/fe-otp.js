@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeOtp } from './FeOtp.js';
 
-customElements.define('fe-otp', FeOtp);
+defineElement('fe-otp', FeOtp);

@@ -1,10 +1,27 @@
-import { html, css, LitElement } from 'lit-element';
-import defaultStyles from '../../FeApp.style.js';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 import '@lion/steps/define';
+import { LionStep, LionSteps } from '@lion/steps';
 import { FeServices } from '../../FeServices.js';
-import '../../Components/fe-notification/fe-notification.js';
+import { FeNotification } from '../../Components/fe-notification/FeNotification.js';
+import { FeFundTransfer } from '../../Components/fe-fund-transfer/FeFundTransfer.js';
+import { FeTransactionReview } from '../../Components/fe-transaction-review/FeTransactionReview.js';
+import { FeSuccess } from '../../Components/fe-success/FeSuccess.js';
+import { FeOtp } from '../../Components/fe-otp/FeOtp.js';
+import defaultStyles from '../../FeApp.style.js';
 
-export class TransactionPage extends LitElement {
+export class TransactionPage extends ScopedElementsMixin(LitElement) {
+  static get scopedElements() {
+    return {
+      'lion-steps': LionSteps,
+      'lion-step': LionStep,
+      'fe-notification': FeNotification,
+      'fe-fund-transfer': FeFundTransfer,
+      'fe-transaction-review': FeTransactionReview,
+      'fe-success': FeSuccess,
+      'fe-otp': FeOtp,
+    };
+  }
+
   static get styles() {
     return css`
       ${defaultStyles}

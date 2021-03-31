@@ -1,9 +1,18 @@
-import { LitElement, html, css } from 'lit-element';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 import { nothing } from 'lit-html';
 import { localize, LocalizeMixin } from '@lion/localize';
 import defaultStyles from '../../FeApp.style.js';
+import { FeFooter } from '../fe-footer/FeFooter.js';
 
-export class FeTransactionReview extends LocalizeMixin(LitElement) {
+export class FeTransactionReview extends ScopedElementsMixin(
+  LocalizeMixin(LitElement)
+) {
+  static get scopedElements() {
+    return {
+      'fe-footer': FeFooter,
+    };
+  }
+
   static get localizeNamespaces() {
     return [
       {

@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-notification.js';
+import { defineElement } from '../../../utils.js';
+import { FeNotification } from '../FeNotification.js';
+
+defineElement('fe-notification', FeNotification);
 
 export default {
   title: 'Component',

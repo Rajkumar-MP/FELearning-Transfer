@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-fund-transfer.js';
+import { defineElement } from '../../../utils.js';
+import { FeFundTransfer } from '../FeFundTransfer.js';
+
+defineElement('fe-fund-transfer', FeFundTransfer);
 
 export default {
   title: 'Component',

@@ -1,7 +1,13 @@
 import { localize } from '@lion/localize';
 import { html, fixture, expect } from '@open-wc/testing';
 
+import { defineElement } from '../../../utils.js';
+
+import { FeLangToggle } from '../FeLangToggle.js';
+
 import '../fe-lang-toggle.js';
+
+defineElement('fe-lang-toggle', FeLangToggle);
 
 describe('FeLangToggle', () => {
   let element;

@@ -1,6 +1,8 @@
 import { html, fixture, expect, aTimeout } from '@open-wc/testing';
+import { defineElement } from '../../../utils.js';
+import { FeTransactionReview } from '../FeTransactionReview.js';
 
-import '../fe-transaction-review.js';
+defineElement('fe-transaction-review', FeTransactionReview);
 
 describe('FeTransactionReview', () => {
   let element;

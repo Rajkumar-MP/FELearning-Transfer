@@ -1,6 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-new-payee.js';
+import { defineElement } from '../../../utils.js';
+import { FeNewPayee } from '../FeNewPayee.js';
 
+defineElement('fe-new-payee', FeNewPayee);
 export default {
   title: 'Component',
   component: 'Add-Payee',

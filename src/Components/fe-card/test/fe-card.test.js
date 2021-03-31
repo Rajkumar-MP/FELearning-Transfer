@@ -1,6 +1,9 @@
 import { html, fixture, expect } from '@open-wc/testing';
+import { defineElement } from '../../../utils.js';
 
-import '../fe-card.js';
+import { FeCard } from '../FeCard.js';
+
+defineElement('fe-card', FeCard);
 
 describe('FeCard', () => {
   let element;

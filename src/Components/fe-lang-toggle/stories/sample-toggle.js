@@ -1,7 +1,9 @@
 import { LitElement, html } from 'lit-element';
 import { localize, LocalizeMixin } from '@lion/localize';
+import { defineElement } from '../../../utils.js';
+import { FeLangToggle } from '../FeLangToggle.js';
 
-import '../fe-lang-toggle.js';
+defineElement('fe-lang-toggle', FeLangToggle);
 
 export class SampleToggle extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {

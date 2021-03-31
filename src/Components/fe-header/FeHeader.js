@@ -1,6 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
+import { ScopedElementsMixin, LitElement, html, css } from '@lion/core';
 
-export class FeHeader extends LitElement {
+export class FeHeader extends ScopedElementsMixin(LitElement) {
   static get properties() {
     return {
       title: { type: String },

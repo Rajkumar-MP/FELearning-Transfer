@@ -1,7 +1,10 @@
 import { html, fixture, expect, aTimeout } from '@open-wc/testing';
 import { ajax } from '@lion/ajax';
 import sinon from 'sinon';
-import '../LoginPage.js';
+import { defineElement, getScopedTagName } from '../../../utils.js';
+import { LoginPage } from '../LoginPage.js';
+
+defineElement('login-page', LoginPage);
 
 describe('LoginPage', () => {
   let element;
@@ -10,7 +13,9 @@ describe('LoginPage', () => {
   });
 
   it('Check if response is returned', async () => {
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
     const requestMock = sinon.stub(ajax, 'requestJson');
     requestMock.resolves({ body: 'SuccessResponse' });
     requestMock.restore();
@@ -19,7 +24,9 @@ describe('LoginPage', () => {
   });
 
   it('Check for the error from server', async () => {
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
     const requestMock = sinon.stub(ajax, 'requestJson');
     requestMock.rejects({});
     element.login();

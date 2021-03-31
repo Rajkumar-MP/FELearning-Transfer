@@ -1,6 +1,9 @@
 import { html, fixture, expect } from '@open-wc/testing';
+import { defineElement } from '../../../utils.js';
 
-import '../fe-header.js';
+import { FeHeader } from '../FeHeader.js';
+
+defineElement('fe-header', FeHeader);
 
 describe('FeHeader', () => {
   let element;

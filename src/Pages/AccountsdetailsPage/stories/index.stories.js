@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../AccountdetailsPage.js';
+import { defineElement } from '../../../utils.js';
+import { AccountdetailsPage } from '../AccountdetailsPage.js';
+
+defineElement('account-details-page', AccountdetailsPage);
 
 export default {
   title: 'Page',

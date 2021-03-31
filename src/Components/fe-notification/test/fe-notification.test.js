@@ -1,6 +1,8 @@
 import { html, fixture, expect, aTimeout } from '@open-wc/testing';
+import { defineElement } from '../../../utils.js';
+import { FeNotification } from '../FeNotification.js';
 
-import '../fe-notification.js';
+defineElement('fe-notification', FeNotification);
 
 describe('FeNotification', () => {
   let element;
