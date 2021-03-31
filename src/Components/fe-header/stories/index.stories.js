@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-header.js';
+import { defineElement } from '../../../utils.js';
+import { FeHeader } from '../FeHeader.js';
+
+defineElement('fe-header', FeHeader);
 
 export default {
   title: 'Component',

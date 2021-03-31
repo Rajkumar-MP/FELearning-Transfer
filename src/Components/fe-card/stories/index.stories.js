@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-card.js';
+import { defineElement } from '../../../utils.js';
+import { FeCard } from '../FeCard.js';
+
+defineElement('fe-card', FeCard);
 
 export default {
   title: 'Component',

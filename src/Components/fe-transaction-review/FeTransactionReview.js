@@ -1,9 +1,18 @@
-import { LitElement, html, css } from 'lit-element';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 import { nothing } from 'lit-html';
 import { localize, LocalizeMixin } from '@lion/localize';
 import defaultStyles from '../../FeApp.style.js';
+import { FeFooter } from '../fe-footer/FeFooter.js';
 
-export class FeTransactionReview extends LocalizeMixin(LitElement) {
+export class FeTransactionReview extends ScopedElementsMixin(
+  LocalizeMixin(LitElement)
+) {
+  static get scopedElements() {
+    return {
+      'fe-footer': FeFooter,
+    };
+  }
+
   static get localizeNamespaces() {
     return [
       {
@@ -21,6 +30,14 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
       amount: { type: Number },
       remarks: { type: String },
     };
+  }
+
+  triggerProceed() {
+    this.dispatchEvent(new CustomEvent('review-complete', { bubbles: true }));
+  }
+
+  triggerPrevious() {
+    this.dispatchEvent(new CustomEvent('previous', { bubbles: true }));
   }
 
   static get styles() {
@@ -77,7 +94,8 @@ export class FeTransactionReview extends LocalizeMixin(LitElement) {
         <fe-footer
           primary=${localize.msg('fe-transaction-review:proceed')}
           secondary=${localize.msg('fe-transaction-review:edit')}
-          }
+          @primary-btn-click=${() => this.triggerProceed()}
+          @secondary-btn-click=${() => this.triggerPrevious()}
         >
         </fe-footer>
       </div>

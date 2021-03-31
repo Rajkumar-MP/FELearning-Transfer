@@ -1,6 +1,8 @@
 import { html, fixture, expect, oneEvent, assert } from '@open-wc/testing';
+import { defineElement } from '../../../utils.js';
+import { FeFundTransfer } from '../FeFundTransfer.js';
 
-import '../fe-fund-transfer.js';
+defineElement('fe-fund-transfer', FeFundTransfer);
 
 describe('FeFundTransfer', () => {
   let element;

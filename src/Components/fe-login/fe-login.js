@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeLogin } from './FeLogin.js';
 
-customElements.define('fe-login', FeLogin);
+defineElement('fe-login', FeLogin);

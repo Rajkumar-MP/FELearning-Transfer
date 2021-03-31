@@ -2,22 +2,25 @@ import { html, fixture, expect, aTimeout } from '@open-wc/testing';
 import { ajax } from '@lion/ajax';
 import sinon from 'sinon';
 import { defineElement, getScopedTagName } from '../../../utils.js';
-import { LoginPage } from '../LoginPage.js';
+import { TransactionPage } from '../TransactionPage.js';
 
-defineElement('login-page', LoginPage);
+defineElement('transaction-page', TransactionPage);
 
-describe('LoginPage', () => {
+describe('TransactionPage', () => {
   let element;
   beforeEach(async () => {
-    element = await fixture(html`<login-page></login-page>`);
+    element = await fixture(html`<transaction-page></transaction-page>`);
   });
 
   it('Check if response is returned', async () => {
     const notificationtag = element.shadowRoot.querySelector(
       getScopedTagName(element, 'fe-notification')
     );
-    const requestMock = sinon.stub(ajax, 'requestJson');
-    requestMock.resolves({ body: 'SuccessResponse' });
+
+    const requestMock = sinon.stub(ajax, 'request');
+    requestMock.resolves({ body: 'Success' });
+
+    await aTimeout(150);
     requestMock.restore();
 
     expect(notificationtag.classList.contains('hidden')).to.be.true;
@@ -27,11 +30,14 @@ describe('LoginPage', () => {
     const notificationtag = element.shadowRoot.querySelector(
       getScopedTagName(element, 'fe-notification')
     );
-    const requestMock = sinon.stub(ajax, 'requestJson');
-    requestMock.rejects({});
-    element.login();
-    await aTimeout(10);
+    const requestMock = sinon.stub(ajax, 'request');
+    requestMock.rejects({ body: 'Fail' });
+
+    element.getAccountDetails();
+
+    await aTimeout(150);
     requestMock.restore();
+
     expect(notificationtag.classList.contains('hidden')).to.be.false;
   });
 

@@ -1,13 +1,20 @@
-import { LitElement, html, css } from 'lit-element';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 import { localize, LocalizeMixin } from '@lion/localize';
 import { Required } from '@lion/form-core';
+import { LionButton } from '@lion/button';
+import { LionForm } from '@lion/form';
+import { LionInput } from '@lion/input';
 import defaultStyles from '../../FeApp.style.js';
 
-import '@lion/button';
-import '@lion/form/lion-form';
-import '@lion/input/lion-input';
+export class FeNewPayee extends ScopedElementsMixin(LocalizeMixin(LitElement)) {
+  static get scopedElements() {
+    return {
+      'lion-button': LionButton,
+      'lion-form': LionForm,
+      'lion-input': LionInput,
+    };
+  }
 
-export class FeNewPayee extends LocalizeMixin(LitElement) {
   static get localizeNamespaces() {
     return [
       {
@@ -18,7 +25,9 @@ export class FeNewPayee extends LocalizeMixin(LitElement) {
   }
 
   triggerSubmit() {
-    const form = this.shadowRoot.querySelector('lion-form');
+    const form = this.shadowRoot.querySelector(
+      this.getScopedTagName('lion-form', this.scopedElements)
+    );
     form.submit();
   }
 

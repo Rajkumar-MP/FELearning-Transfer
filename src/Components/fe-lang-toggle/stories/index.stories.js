@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import './sample-toggle.js';
+import { defineElement } from '../../../utils.js';
+import { SampleToggle } from './sample-toggle.js';
+
+defineElement('sample-toggle', SampleToggle);
 
 export default {
   title: 'Component',

@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeTransactionReview } from './FeTransactionReview.js';
 
-customElements.define('fe-transaction-review', FeTransactionReview);
+defineElement('fe-transaction-review', FeTransactionReview);

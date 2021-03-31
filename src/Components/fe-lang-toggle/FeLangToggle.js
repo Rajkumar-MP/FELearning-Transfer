@@ -1,9 +1,18 @@
-import { LitElement, html, css } from 'lit-element';
+import { LionButton } from '@lion/button';
+import { ScopedElementsMixin, LitElement, html, css } from '@lion/core';
 import { localize, LocalizeMixin } from '@lion/localize';
-import '@lion/button';
+
 import defaultStyles from '../../FeApp.style.js';
 
-export class FeLangToggle extends LocalizeMixin(LitElement) {
+export class FeLangToggle extends ScopedElementsMixin(
+  LocalizeMixin(LitElement)
+) {
+  static get scopedElements() {
+    return {
+      'lion-button': LionButton,
+    };
+  }
+
   static get localizeNamespaces() {
     return [
       {
@@ -25,7 +34,10 @@ export class FeLangToggle extends LocalizeMixin(LitElement) {
 
   toggleLanguage(e, locale) {
     localize.locale = locale;
-    const buttons = this.shadowRoot.querySelectorAll('lion-button');
+
+    const buttons = this.shadowRoot.querySelectorAll(
+      this.getScopedTagName('lion-button', this.scopedElements)
+    );
     buttons.forEach(button => {
       button.classList.remove('selected');
     });

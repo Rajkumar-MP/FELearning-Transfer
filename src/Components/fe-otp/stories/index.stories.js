@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-otp.js';
+import { defineElement } from '../../../utils.js';
+import { FeOtp } from '../FeOtp.js';
+
+defineElement('fe-otp', FeOtp);
 
 export default {
   title: 'Component',

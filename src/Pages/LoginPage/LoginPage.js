@@ -1,10 +1,17 @@
-import { html, css, LitElement } from 'lit-element';
+import { ScopedElementsMixin, LitElement, css, html } from '@lion/core';
 import defaultStyles from '../../FeApp.style.js';
 import { FeServices } from '../../FeServices.js';
-import '../../Components/fe-login/fe-login.js';
-import '../../Components/fe-notification/fe-notification.js';
+import { FeNotification } from '../../Components/fe-notification/FeNotification.js';
+import { FeLogin } from '../../Components/fe-login/FeLogin.js';
 
-export class LoginPage extends LitElement {
+export class LoginPage extends ScopedElementsMixin(LitElement) {
+  static get scopedElements() {
+    return {
+      'fe-login': FeLogin,
+      'fe-notification': FeNotification,
+    };
+  }
+
   static get styles() {
     return css`
       ${defaultStyles}

@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeSuccess } from './FeSuccess.js';
 
-customElements.define('fe-success', FeSuccess);
+defineElement('fe-success', FeSuccess);

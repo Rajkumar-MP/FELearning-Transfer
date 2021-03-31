@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-success.js';
+import { defineElement } from '../../../utils.js';
+import { FeSuccess } from '../FeSuccess.js';
+
+defineElement('fe-success', FeSuccess);
 
 export default {
   title: 'Component',

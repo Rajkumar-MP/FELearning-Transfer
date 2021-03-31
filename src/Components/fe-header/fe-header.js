@@ -1,3 +1,4 @@
+import { defineElement } from '../../utils.js';
 import { FeHeader } from './FeHeader.js';
 
-customElements.define('fe-header', FeHeader);
+defineElement('fe-header', FeHeader);

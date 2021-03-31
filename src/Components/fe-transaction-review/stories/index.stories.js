@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-transaction-review.js';
+import { defineElement } from '../../../utils.js';
+import { FeTransactionReview } from '../FeTransactionReview.js';
+
+defineElement('fe-transaction-review', FeTransactionReview);
 
 export default {
   title: 'Component',

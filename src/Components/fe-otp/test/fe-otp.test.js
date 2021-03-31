@@ -2,7 +2,10 @@ import { ajax } from '@lion/ajax';
 import { html, fixture, expect, oneEvent, aTimeout } from '@open-wc/testing';
 import sinon from 'sinon';
 
-import '../fe-otp.js';
+import { defineElement, getScopedTagName } from '../../../utils.js';
+import { FeOtp } from '../FeOtp.js';
+
+defineElement('fe-otp', FeOtp);
 
 describe('FeOtp', () => {
   let element;
@@ -12,7 +15,9 @@ describe('FeOtp', () => {
 
   it('Check if response is returned', async () => {
     const otpcode = element.shadowRoot.querySelector('#otp-code');
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
     const requestMock = sinon.stub(ajax, 'requestJson');
     requestMock.resolves({ body: 'SuccessResponse' });
 
@@ -28,7 +33,9 @@ describe('FeOtp', () => {
 
   it('Check for the error from server', async () => {
     const otpcode = element.shadowRoot.querySelector('#otp-code');
-    const notificationtag = element.shadowRoot.querySelector('fe-notification');
+    const notificationtag = element.shadowRoot.querySelector(
+      getScopedTagName(element, 'fe-notification')
+    );
     const requestMock = sinon.stub(ajax, 'requestJson');
     requestMock.rejects({});
 

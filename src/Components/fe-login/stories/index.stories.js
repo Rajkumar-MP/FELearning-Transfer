@@ -1,5 +1,8 @@
 import { html } from 'lit-html';
-import '../fe-login.js';
+import { defineElement } from '../../../utils.js';
+import { FeLogin } from '../FeLogin.js';
+
+defineElement('fe-login', FeLogin);
 
 export default {
   title: 'Component',
